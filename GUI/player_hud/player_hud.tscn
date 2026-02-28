@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://c2qudfadoekdx"]
+
+[ext_resource type="Texture2D" uid="uid://c3t5to3d12e3n" path="res://GUI/player_hud/gui-health.png" id="1_alx7a"]
+[ext_resource type="Script" uid="uid://ems5egjfa5co" path="res://GUI/player_hud/player_hud.gd" id="1_oghrr"]
+[ext_resource type="PackedScene" uid="uid://daowwj3eek1f2" path="res://GUI/player_hud/heart_gui.tscn" id="2_oghrr"]
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=71423742]
+layer = 2
+script = ExtResource("1_oghrr")
+
+[node name="HUDControl" type="Control" parent="." unique_id=1554620191]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HUDControl" unique_id=1722591076]
+position = Vector2(385, 9)
+texture = ExtResource("1_alx7a")
+region_enabled = true
+region_rect = Rect2(29, 0, 34, 8)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="HUDControl" unique_id=836312074]
+layout_mode = 0
+offset_left = 321.0
+offset_top = 19.0
+offset_right = 451.0
+offset_bottom = 45.0
+mouse_filter = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+alignment = 1
+
+[node name="Heart" parent="HUDControl/HFlowContainer" unique_id=1815857206 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart2" parent="HUDControl/HFlowContainer" unique_id=1495398059 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart3" parent="HUDControl/HFlowContainer" unique_id=2131451823 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart4" parent="HUDControl/HFlowContainer" unique_id=1356838525 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart5" parent="HUDControl/HFlowContainer" unique_id=1654515643 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart6" parent="HUDControl/HFlowContainer" unique_id=357359575 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart7" parent="HUDControl/HFlowContainer" unique_id=96409978 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart8" parent="HUDControl/HFlowContainer" unique_id=207651477 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart9" parent="HUDControl/HFlowContainer" unique_id=258882065 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart10" parent="HUDControl/HFlowContainer" unique_id=1608680922 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart11" parent="HUDControl/HFlowContainer" unique_id=532561916 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart12" parent="HUDControl/HFlowContainer" unique_id=2030272360 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart13" parent="HUDControl/HFlowContainer" unique_id=328111488 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart14" parent="HUDControl/HFlowContainer" unique_id=137432887 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart15" parent="HUDControl/HFlowContainer" unique_id=52051699 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart16" parent="HUDControl/HFlowContainer" unique_id=1530414372 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart17" parent="HUDControl/HFlowContainer" unique_id=1352847608 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart18" parent="HUDControl/HFlowContainer" unique_id=1075945918 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart19" parent="HUDControl/HFlowContainer" unique_id=1345669713 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Heart20" parent="HUDControl/HFlowContainer" unique_id=856200018 instance=ExtResource("2_oghrr")]
+layout_mode = 2
+mouse_filter = 1

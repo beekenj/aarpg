@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dbhv13lwe7daf"]
+
+[ext_resource type="Script" uid="uid://cwkscbnv8rkx2" path="res://Levels/scripts/player_spawn.gd" id="1_lyuil"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y6scc"]
+load_path = "res://.godot/imported/PlayerSprite02.png-ce9d001717ebf7bf2d0b7f359222e7d8.ctex"
+
+[node name="PlayerSpawn" type="Node2D" unique_id=183080090]
+script = ExtResource("1_lyuil")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1242747727]
+modulate = Color(0, 1, 0, 0.6862745)
+position = Vector2(0, -20)
+texture = SubResource("CompressedTexture2D_y6scc")
+hframes = 16
+vframes = 3
