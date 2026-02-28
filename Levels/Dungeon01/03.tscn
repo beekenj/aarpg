@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="1_83go3"]
 [ext_resource type="Script" uid="uid://d3euui4x3rdlw" path="res://Levels/scripts/level.gd" id="2_0vfq5"]
+[ext_resource type="AudioStream" uid="uid://c3tsa68r6j3px" path="res://Levels/Music/04 - Silent Forest.mp3" id="2_j5ba4"]
 [ext_resource type="PackedScene" uid="uid://twoq7utdfew4" path="res://Tile Maps/dungeon_01.tscn" id="2_kuoxt"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="3_br7tp"]
 [ext_resource type="PackedScene" uid="uid://c5gqbal1a8ykp" path="res://GeneralNodes/EnemyCounter/enemy_counter.tscn" id="5_yxc4f"]
@@ -11,6 +12,7 @@
 
 [node name="03" type="Node2D" unique_id=203527221]
 script = ExtResource("2_0vfq5")
+music = ExtResource("2_j5ba4")
 
 [node name="Dungeon01_TileMap" parent="." unique_id=1184362757 instance=ExtResource("2_kuoxt")]
 rendering_quadrant_size = 32
