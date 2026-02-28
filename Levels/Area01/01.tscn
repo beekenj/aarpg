@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="2_chooo"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="4_4t7i1"]
 [ext_resource type="PackedScene" uid="uid://1rwyhlxle1fh" path="res://Enemies/Goblin/goblin.tscn" id="5_pwydo"]
+[ext_resource type="AudioStream" uid="uid://cqhxy5quo60sd" path="res://Levels/Music/01 - Falling Apart (Prologue).mp3" id="6_8itkk"]
 
 [node name="01" type="Node2D" unique_id=235030963]
 script = ExtResource("1_22ele")
@@ -35,3 +36,8 @@ side = 2
 
 [node name="Goblin" parent="." unique_id=1107019713 instance=ExtResource("5_pwydo")]
 position = Vector2(255, 114)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1463618449]
+stream = ExtResource("6_8itkk")
+autoplay = true
+bus = &"Music"
