@@ -666,7 +666,6 @@ script = ExtResource("5_k53q1")
 [node name="Attack" type="Node" parent="StateMachine" unique_id=470942443]
 script = ExtResource("6_fhl08")
 attack_sound = ExtResource("8_od3ui")
-decelerate_speed = null
 
 [node name="Stun" type="Node" parent="StateMachine" unique_id=1589380978]
 script = ExtResource("11_dkpta")

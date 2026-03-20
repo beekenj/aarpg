@@ -23,7 +23,7 @@ func Enter() -> void:
 	player.velocity = direction * -knockback_speed
 	player.SetDirection()
 	
-	player.UpdateAnimation("stun")
+	player.update_animation("stun")
 	player.make_invulnerable(invulnerable_duration)
 	player.effect_animation_player.play("damaged")
 	pass
