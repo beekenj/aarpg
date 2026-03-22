@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AARPG"
-run/main_scene="uid://cf5wpjwalb6uc"
+run/main_scene="uid://77dx84ir7nlj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -6,8 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://cqhxy5quo60sd" path="res://Levels/Music/01 - Falling Apart (Prologue).mp3" id="2_ua1y0"]
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="3_mwxiv"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="5_mwxiv"]
-[ext_resource type="PackedScene" uid="uid://dl5vcyjj1xbno" path="res://Items/item_pickup/item_pickup.tscn" id="6_wi5as"]
-[ext_resource type="Resource" uid="uid://8qgcg0rmriho" path="res://Items/gem.tres" id="7_icgqb"]
+[ext_resource type="PackedScene" uid="uid://dvhdmorcq4463" path="res://npc/npc.tscn" id="7_icgqb"]
+[ext_resource type="Resource" uid="uid://cglppk3oiqxrr" path="res://npc/00_npcs/npc_01.tres" id="8_jeo2k"]
+[ext_resource type="PackedScene" uid="uid://k14lanhf3no4" path="res://npc/npc_behavior_wander.tscn" id="8_ua1y0"]
+[ext_resource type="Resource" uid="uid://v30ayv8qjfae" path="res://npc/00_npcs/npc_02.tres" id="10_krbdk"]
 
 [node name="02" type="Node2D" unique_id=309615409]
 script = ExtResource("1_tek06")
@@ -35,25 +37,24 @@ position = Vector2(97, 117)
 position = Vector2(97, 141)
 
 [node name="PlayerSpawn" parent="." unique_id=183080090 instance=ExtResource("3_mwxiv")]
-position = Vector2(213, 175)
+position = Vector2(293, 247)
 
 [node name="LevelTransition" parent="." unique_id=552162319 instance=ExtResource("5_mwxiv")]
 position = Vector2(288, -32)
 level = "uid://cf5wpjwalb6uc"
 side = 2
 
-[node name="ItemPickup" parent="." unique_id=37733290 instance=ExtResource("6_wi5as")]
-position = Vector2(316, 162)
-item_data = ExtResource("7_icgqb")
+[node name="NPC" parent="." unique_id=2120481944 instance=ExtResource("7_icgqb")]
+position = Vector2(170, 151)
+npc_resource = ExtResource("8_jeo2k")
 
-[node name="ItemPickup2" parent="." unique_id=673006468 instance=ExtResource("6_wi5as")]
-position = Vector2(492, 132)
-item_data = ExtResource("7_icgqb")
+[node name="NpcBehaviorWander" parent="NPC" unique_id=335579999 instance=ExtResource("8_ua1y0")]
+wander_duration = null
 
-[node name="ItemPickup3" parent="." unique_id=1145137009 instance=ExtResource("6_wi5as")]
-position = Vector2(491, 170)
-item_data = ExtResource("7_icgqb")
+[node name="NPC2" parent="." unique_id=713555761 instance=ExtResource("7_icgqb")]
+position = Vector2(362, 151)
+npc_resource = ExtResource("10_krbdk")
 
-[node name="ItemPickup4" parent="." unique_id=1899010422 instance=ExtResource("6_wi5as")]
-position = Vector2(337, 213)
-item_data = ExtResource("7_icgqb")
+[node name="NpcBehaviorWander" parent="NPC2" unique_id=134287849 instance=ExtResource("8_ua1y0")]
+wander_speed = 60.0
+wander_duration = 4.0
