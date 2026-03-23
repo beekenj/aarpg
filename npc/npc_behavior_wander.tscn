@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c5smoax82brry" path="res://npc/scipts/npc_behavior_wander.gd" id="1_h0y2q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h0y2q"]
+radius = 64.0
 
 [node name="NpcWanderBehavior" type="Node2D" unique_id=335579999]
 script = ExtResource("1_h0y2q")

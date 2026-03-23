@@ -7,9 +7,32 @@
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="3_mwxiv"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="5_mwxiv"]
 [ext_resource type="PackedScene" uid="uid://dvhdmorcq4463" path="res://npc/npc.tscn" id="7_icgqb"]
-[ext_resource type="Resource" uid="uid://cglppk3oiqxrr" path="res://npc/00_npcs/npc_01.tres" id="8_jeo2k"]
+[ext_resource type="Script" uid="uid://crvlnjewusfex" path="res://npc/scipts/npc_resource.gd" id="8_q5iyu"]
 [ext_resource type="PackedScene" uid="uid://k14lanhf3no4" path="res://npc/npc_behavior_wander.tscn" id="8_ua1y0"]
-[ext_resource type="Resource" uid="uid://v30ayv8qjfae" path="res://npc/00_npcs/npc_02.tres" id="10_krbdk"]
+[ext_resource type="Texture2D" uid="uid://caun62q53dwrj" path="res://npc/sprites/portraits/npc_portrait_02.png" id="10_sci0f"]
+[ext_resource type="Texture2D" uid="uid://cqckpbfonkyd0" path="res://npc/sprites/npc_sprite_02.png" id="11_r3wde"]
+[ext_resource type="PackedScene" uid="uid://dnu2e7srrpr5n" path="res://npc/npc_behavior_patrol.tscn" id="12_r3wde"]
+[ext_resource type="PackedScene" uid="uid://d31ayrd2auxyg" path="res://npc/patrol_location.tscn" id="13_isjcn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_isjcn"]
+load_path = "res://.godot/imported/npc_portrait_01.png-0d842fbb89fe27788e3aacb25efe8d8e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mxs1d"]
+load_path = "res://.godot/imported/npc_sprite.png-305fa6f1506fda7a3002293f984593d1.ctex"
+
+[sub_resource type="Resource" id="Resource_5l2i7"]
+script = ExtResource("8_q5iyu")
+npc_name = "Oren"
+sprite = SubResource("CompressedTexture2D_mxs1d")
+portrait = SubResource("CompressedTexture2D_isjcn")
+metadata/_custom_type_script = "uid://crvlnjewusfex"
+
+[sub_resource type="Resource" id="Resource_xiy2e"]
+script = ExtResource("8_q5iyu")
+npc_name = "Bob"
+sprite = ExtResource("11_r3wde")
+portrait = ExtResource("10_sci0f")
+metadata/_custom_type_script = "uid://crvlnjewusfex"
 
 [node name="02" type="Node2D" unique_id=309615409]
 script = ExtResource("1_tek06")
@@ -37,7 +60,7 @@ position = Vector2(97, 117)
 position = Vector2(97, 141)
 
 [node name="PlayerSpawn" parent="." unique_id=183080090 instance=ExtResource("3_mwxiv")]
-position = Vector2(293, 247)
+position = Vector2(248, 262)
 
 [node name="LevelTransition" parent="." unique_id=552162319 instance=ExtResource("5_mwxiv")]
 position = Vector2(288, -32)
@@ -45,16 +68,39 @@ level = "uid://cf5wpjwalb6uc"
 side = 2
 
 [node name="NPC" parent="." unique_id=2120481944 instance=ExtResource("7_icgqb")]
-position = Vector2(170, 151)
-npc_resource = ExtResource("8_jeo2k")
+position = Vector2(153, 131)
+npc_resource = SubResource("Resource_5l2i7")
 
 [node name="NpcBehaviorWander" parent="NPC" unique_id=335579999 instance=ExtResource("8_ua1y0")]
-wander_duration = null
+wander_range = 1
 
-[node name="NPC2" parent="." unique_id=713555761 instance=ExtResource("7_icgqb")]
-position = Vector2(362, 151)
-npc_resource = ExtResource("10_krbdk")
+[node name="NPC2" parent="." unique_id=1733830355 instance=ExtResource("7_icgqb")]
+position = Vector2(323, 161)
+npc_resource = SubResource("Resource_xiy2e")
 
-[node name="NpcBehaviorWander" parent="NPC2" unique_id=134287849 instance=ExtResource("8_ua1y0")]
-wander_speed = 60.0
-wander_duration = 4.0
+[node name="NpcBehaviorPatrol" parent="NPC2" unique_id=497437212 instance=ExtResource("12_r3wde")]
+position = Vector2(-52, 53)
+
+[node name="PatrolLocation" parent="NPC2/NpcBehaviorPatrol" unique_id=261552610 instance=ExtResource("13_isjcn")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(52, -53)
+
+[node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" unique_id=1745201027 instance=ExtResource("13_isjcn")]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(125, -51)
+
+[node name="PatrolLocation3" parent="NPC2/NpcBehaviorPatrol" unique_id=595148282 instance=ExtResource("13_isjcn")]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(98, -132)
+
+[node name="PatrolLocation4" parent="NPC2/NpcBehaviorPatrol" unique_id=999138646 instance=ExtResource("13_isjcn")]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(-6, -113)
+
+[node name="PatrolLocation6" parent="NPC2/NpcBehaviorPatrol" unique_id=1496417008 instance=ExtResource("13_isjcn")]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(143, -110)
+
+[node name="PatrolLocation5" parent="NPC2/NpcBehaviorPatrol" unique_id=1164410041 instance=ExtResource("13_isjcn")]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(-12, -49)
