@@ -42,10 +42,7 @@ func gather_patrol_locations(_n : Node = null) -> void:
                 _p.modulate = _get_color_by_index(i)
 
                 var _next : PatrolLocation
-                if i < patrol_locations.size() - 1:
-                    _next = patrol_locations[i + 1]
-                else:
-                    _next = patrol_locations[0]
+                _next = patrol_locations[(i + 1) % patrol_locations.size()]
                 _p.update_line(_next.position)
 
 

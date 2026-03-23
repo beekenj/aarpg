@@ -103,4 +103,4 @@ position = Vector2(143, -110)
 
 [node name="PatrolLocation5" parent="NPC2/NpcBehaviorPatrol" unique_id=1164410041 instance=ExtResource("13_isjcn")]
 modulate = Color(1, 0, 1, 1)
-position = Vector2(-12, -49)
+position = Vector2(-12, -56)
