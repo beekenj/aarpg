@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dalmgct7b53js"]
+
+[node name="DialogSystem" type="CanvasLayer" unique_id=786299028]
+process_mode = 3
+layer = 0

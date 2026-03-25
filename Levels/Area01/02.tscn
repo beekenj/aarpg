@@ -60,7 +60,7 @@ position = Vector2(97, 117)
 position = Vector2(97, 141)
 
 [node name="PlayerSpawn" parent="." unique_id=183080090 instance=ExtResource("3_mwxiv")]
-position = Vector2(248, 262)
+position = Vector2(208, 244)
 
 [node name="LevelTransition" parent="." unique_id=552162319 instance=ExtResource("5_mwxiv")]
 position = Vector2(288, -32)
@@ -75,32 +75,25 @@ npc_resource = SubResource("Resource_5l2i7")
 wander_range = 1
 
 [node name="NPC2" parent="." unique_id=1733830355 instance=ExtResource("7_icgqb")]
-position = Vector2(323, 161)
+position = Vector2(336, 144)
 npc_resource = SubResource("Resource_xiy2e")
 
 [node name="NpcBehaviorPatrol" parent="NPC2" unique_id=497437212 instance=ExtResource("12_r3wde")]
-position = Vector2(-52, 53)
+position = Vector2(-57, 55)
 
 [node name="PatrolLocation" parent="NPC2/NpcBehaviorPatrol" unique_id=261552610 instance=ExtResource("13_isjcn")]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(52, -53)
+position = Vector2(121, -55)
 
-[node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" unique_id=1745201027 instance=ExtResource("13_isjcn")]
+[node name="PatrolLocation2" parent="NPC2/NpcBehaviorPatrol" unique_id=688238295 instance=ExtResource("13_isjcn")]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(125, -51)
+position = Vector2(121, 9)
 
-[node name="PatrolLocation3" parent="NPC2/NpcBehaviorPatrol" unique_id=595148282 instance=ExtResource("13_isjcn")]
+[node name="PatrolLocation3" parent="NPC2/NpcBehaviorPatrol" unique_id=48242143 instance=ExtResource("13_isjcn")]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(98, -132)
+position = Vector2(-15, 9)
+wait_time = 1.0
 
-[node name="PatrolLocation4" parent="NPC2/NpcBehaviorPatrol" unique_id=999138646 instance=ExtResource("13_isjcn")]
+[node name="PatrolLocation4" parent="NPC2/NpcBehaviorPatrol" unique_id=1811879167 instance=ExtResource("13_isjcn")]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(-6, -113)
-
-[node name="PatrolLocation6" parent="NPC2/NpcBehaviorPatrol" unique_id=1496417008 instance=ExtResource("13_isjcn")]
-modulate = Color(0, 0, 1, 1)
-position = Vector2(143, -110)
-
-[node name="PatrolLocation5" parent="NPC2/NpcBehaviorPatrol" unique_id=1164410041 instance=ExtResource("13_isjcn")]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(-12, -56)
+position = Vector2(-15, -55)
