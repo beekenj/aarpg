@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dvhdmorcq4463" path="res://npc/npc.tscn" id="7_icgqb"]
 [ext_resource type="Script" uid="uid://crvlnjewusfex" path="res://npc/scipts/npc_resource.gd" id="8_q5iyu"]
 [ext_resource type="PackedScene" uid="uid://k14lanhf3no4" path="res://npc/npc_behavior_wander.tscn" id="8_ua1y0"]
+[ext_resource type="PackedScene" uid="uid://caduja2rgl2gk" path="res://Interactables/dialog/dialog_interaction.tscn" id="10_isjcn"]
 [ext_resource type="Texture2D" uid="uid://caun62q53dwrj" path="res://npc/sprites/portraits/npc_portrait_02.png" id="10_sci0f"]
 [ext_resource type="Texture2D" uid="uid://cqckpbfonkyd0" path="res://npc/sprites/npc_sprite_02.png" id="11_r3wde"]
 [ext_resource type="PackedScene" uid="uid://dnu2e7srrpr5n" path="res://npc/npc_behavior_patrol.tscn" id="12_r3wde"]
@@ -68,11 +69,13 @@ level = "uid://cf5wpjwalb6uc"
 side = 2
 
 [node name="NPC" parent="." unique_id=2120481944 instance=ExtResource("7_icgqb")]
-position = Vector2(153, 131)
+position = Vector2(145, 174)
 npc_resource = SubResource("Resource_5l2i7")
 
 [node name="NpcBehaviorWander" parent="NPC" unique_id=335579999 instance=ExtResource("8_ua1y0")]
 wander_range = 1
+
+[node name="DialogInteraction" parent="NPC" unique_id=175343357 instance=ExtResource("10_isjcn")]
 
 [node name="NPC2" parent="." unique_id=1733830355 instance=ExtResource("7_icgqb")]
 position = Vector2(336, 144)
