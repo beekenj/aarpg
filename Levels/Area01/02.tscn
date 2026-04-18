@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://caun62q53dwrj" path="res://npc/sprites/portraits/npc_portrait_02.png" id="10_sci0f"]
 [ext_resource type="Script" uid="uid://cdkb66e1trluv" path="res://Interactables/dialog/scripts/dialog_text.gd" id="11_5l2i7"]
 [ext_resource type="Texture2D" uid="uid://cqckpbfonkyd0" path="res://npc/sprites/npc_sprite_02.png" id="11_r3wde"]
+[ext_resource type="Resource" uid="uid://cglppk3oiqxrr" path="res://npc/00_npcs/npc_01.tres" id="12_j3pfp"]
 [ext_resource type="PackedScene" uid="uid://dnu2e7srrpr5n" path="res://npc/npc_behavior_patrol.tscn" id="12_r3wde"]
 [ext_resource type="Resource" uid="uid://bdab7nbe1rl0i" path="res://npc/00_npcs/00_hero.tres" id="12_xiy2e"]
 [ext_resource type="PackedScene" uid="uid://d31ayrd2auxyg" path="res://npc/patrol_location.tscn" id="13_isjcn"]
@@ -83,6 +84,7 @@ wander_range = 1
 script = ExtResource("11_5l2i7")
 text = "
 Hi, [b]Hero[/b], is that you?"
+npc_info = ExtResource("12_j3pfp")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
 [node name="DialogText2" type="Node" parent="NPC/DialogInteraction" unique_id=846494375]
@@ -96,6 +98,7 @@ metadata/_custom_type_script = "uid://cdkb66e1trluv"
 script = ExtResource("11_5l2i7")
 text = "Nice bro!
 Happy to have a hero!"
+npc_info = ExtResource("12_j3pfp")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
 [node name="NPC2" parent="." unique_id=1733830355 instance=ExtResource("7_icgqb")]

@@ -9,4 +9,5 @@ script = ExtResource("1_mlker")
 npc_name = "Oren"
 sprite = ExtResource("3_4tdd8")
 portrait = ExtResource("1_fxmbg")
+dialogue_audio_pitch = 0.7
 metadata/_custom_type_script = "uid://crvlnjewusfex"

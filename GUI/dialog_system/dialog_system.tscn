@@ -5,7 +5,9 @@
 [ext_resource type="FontFile" uid="uid://yuwy4uqsbdd1" path="res://GUI/fonts/Abaddon Light.ttf" id="3_qocm2"]
 [ext_resource type="FontFile" uid="uid://cbsuvg8x0ke6k" path="res://GUI/fonts/Abaddon Bold.ttf" id="4_dwuo2"]
 [ext_resource type="Texture2D" uid="uid://bnw62r07cdogq" path="res://npc/sprites/portraits/npc_portrait_01.png" id="5_dwuo2"]
+[ext_resource type="AudioStream" uid="uid://jhubesonms16" path="res://GUI/dialog_system/audio/voice_blip.wav" id="6_8tyrm"]
 [ext_resource type="FontFile" uid="uid://dplj0nmib8k77" path="res://GUI/fonts/m5x7.ttf" id="6_umqd7"]
+[ext_resource type="Script" uid="uid://c4xka404oubbe" path="res://GUI/dialog_system/scripts/dialog_portrait.gd" id="6_vyuf5"]
 
 [sub_resource type="Gradient" id="Gradient_5yhxf"]
 offsets = PackedFloat32Array(0, 0.9876543)
@@ -125,6 +127,8 @@ text = "Example [b]Text[/b]!!!
 [wave]Wavy text[/wave]
 [shake][color=orangered]Shaking[/color][/shake]"
 scroll_active = false
+visible_characters = 2
+visible_ratio = 0.060606062
 
 [node name="NameLabel" type="Label" parent="DialogUI" unique_id=761065362]
 layout_mode = 0
@@ -143,10 +147,15 @@ text = "NAME"
 position = Vector2(49, 197)
 texture = ExtResource("5_dwuo2")
 hframes = 4
+script = ExtResource("6_vyuf5")
 
 [node name="Timer" type="Timer" parent="DialogUI" unique_id=671285157]
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI" unique_id=1920861762]
+stream = ExtResource("6_8tyrm")
+max_polyphony = 6
+bus = &"SFX"
 
 [node name="DialogProgressContainer" type="PanelContainer" parent="DialogUI" unique_id=1126845527]
 self_modulate = Color(0.19492263, 0.51972955, 0.30255696, 1)

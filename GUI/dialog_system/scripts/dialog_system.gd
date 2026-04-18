@@ -4,8 +4,14 @@ extends CanvasLayer
 class_name DialogSystemNode
 
 signal finished
+signal letter_added(letter : String)
 
 var is_active := false
+var text_in_progress : bool = false
+
+var text_speed : float = 0.02
+var text_length : int = 0
+var plain_text : String
 
 var dialog_items : Array[DialogItem]
 var dialog_items_index : int = 0
@@ -13,10 +19,11 @@ var dialog_items_index : int = 0
 @onready var dialog_ui: Control = $DialogUI
 @onready var content: RichTextLabel = $DialogUI/PanelContainer/RichTextLabel
 @onready var name_label: Label = $DialogUI/NameLabel
-@onready var portrait_sprite: Sprite2D = $DialogUI/PortraitSprite
+@onready var portrait_sprite: DialogPortrait = $DialogUI/PortraitSprite
 @onready var dialog_progress_indicator: PanelContainer = $DialogUI/DialogProgressContainer
 @onready var dialog_progress_indicator_label: Label = $DialogUI/DialogProgressContainer/Label
-
+@onready var timer: Timer = $DialogUI/Timer
+@onready var audio_stream_player: AudioStreamPlayer = $DialogUI/AudioStreamPlayer
 
 
 
@@ -27,6 +34,7 @@ func _ready() -> void:
             get_parent().remove_child(self)
             return
         return
+    timer.timeout.connect(_on_timer_timout)
     hide_dialog()
 
 
@@ -38,6 +46,13 @@ func _unhandled_input(event: InputEvent) -> void:
         event.is_action_pressed("Attack") or 
         event.is_action_pressed("ui_accept")
     ):
+        # skip text typeout when clicked
+        if text_in_progress:
+            content.visible_characters = text_length
+            timer.stop()
+            text_in_progress = false
+            show_dialog_button_indicator(true)
+            return
         dialog_items_index += 1
         if dialog_items_index < dialog_items.size():
             start_dialog()
@@ -45,6 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
             hide_dialog()
 
 
+# show dialog system UI
 func show_dialog(_items : Array[DialogItem]) -> void:
     is_active = true
     dialog_ui.visible = true
@@ -56,6 +72,7 @@ func show_dialog(_items : Array[DialogItem]) -> void:
     start_dialog()
 
 
+# hide dialog system UI
 func hide_dialog() -> void:
     is_active = false
     dialog_ui.visible = false
@@ -64,19 +81,40 @@ func hide_dialog() -> void:
     finished.emit()
 
 
+# initialize UI variables for a new Dialog Interaction
 func start_dialog() -> void:
-    show_dialog_button_indicator(true)
+    show_dialog_button_indicator(false)
     var _d : DialogItem = dialog_items[dialog_items_index]
     set_dialog_data(_d)
 
+    content.visible_characters = 0
+    text_length = content.get_total_character_count()
+    plain_text = content.get_parsed_text()
+    text_in_progress = true
+    start_timer()
 
+
+# ---
+func _on_timer_timout() -> void:
+    content.visible_characters += 1
+    if content.visible_characters <= text_length:
+        letter_added.emit(plain_text[content.visible_characters - 1])
+        start_timer()
+    else:
+        show_dialog_button_indicator(true)
+        text_in_progress = false
+
+
+# set dialog and NPC vairables, etc based on dialog item parameters
 func set_dialog_data(_d: DialogItem) -> void:
     if _d is DialogText:
         content.text = _d.text
     name_label.text = _d.npc_info.npc_name
     portrait_sprite.texture = _d.npc_info.portrait
+    portrait_sprite.audio_pitch_base = _d.npc_info.dialogue_audio_pitch
 
 
+# show dialog NEXT/END indicator once dialog item is complete and ready to advance
 func show_dialog_button_indicator(_is_visible: bool) -> void:
     dialog_progress_indicator.visible = _is_visible
     if dialog_items_index + 1 < dialog_items.size():
@@ -84,3 +122,9 @@ func show_dialog_button_indicator(_is_visible: bool) -> void:
     else:
         dialog_progress_indicator_label.text = "END"
 
+
+# ---
+func start_timer() -> void:
+    timer.wait_time = text_speed
+    # manipulate wait_time
+    timer.start()
