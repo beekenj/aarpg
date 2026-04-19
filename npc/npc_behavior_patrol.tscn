@@ -4,3 +4,6 @@
 
 [node name="NpcBehaviorPatrol" type="Node2D" unique_id=497437212]
 script = ExtResource("1_pbuvt")
+
+[node name="Timer" type="Timer" parent="." unique_id=1932193203]
+one_shot = true

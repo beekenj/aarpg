@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://caun62q53dwrj" path="res://npc/sprites/portraits/npc_portrait_02.png" id="10_sci0f"]
 [ext_resource type="Script" uid="uid://cdkb66e1trluv" path="res://Interactables/dialog/scripts/dialog_text.gd" id="11_5l2i7"]
 [ext_resource type="Texture2D" uid="uid://cqckpbfonkyd0" path="res://npc/sprites/npc_sprite_02.png" id="11_r3wde"]
-[ext_resource type="Resource" uid="uid://cglppk3oiqxrr" path="res://npc/00_npcs/npc_01.tres" id="12_j3pfp"]
 [ext_resource type="PackedScene" uid="uid://dnu2e7srrpr5n" path="res://npc/npc_behavior_patrol.tscn" id="12_r3wde"]
 [ext_resource type="Resource" uid="uid://bdab7nbe1rl0i" path="res://npc/00_npcs/00_hero.tres" id="12_xiy2e"]
 [ext_resource type="PackedScene" uid="uid://d31ayrd2auxyg" path="res://npc/patrol_location.tscn" id="13_isjcn"]
@@ -29,13 +28,15 @@ script = ExtResource("8_q5iyu")
 npc_name = "Oren"
 sprite = SubResource("CompressedTexture2D_mxs1d")
 portrait = SubResource("CompressedTexture2D_isjcn")
+dialogue_audio_pitch = 0.5
 metadata/_custom_type_script = "uid://crvlnjewusfex"
 
 [sub_resource type="Resource" id="Resource_xiy2e"]
 script = ExtResource("8_q5iyu")
-npc_name = "Bob"
+npc_name = "Nero"
 sprite = ExtResource("11_r3wde")
 portrait = ExtResource("10_sci0f")
+dialogue_audio_pitch = 1.5
 metadata/_custom_type_script = "uid://crvlnjewusfex"
 
 [node name="02" type="Node2D" unique_id=309615409]
@@ -84,7 +85,6 @@ wander_range = 1
 script = ExtResource("11_5l2i7")
 text = "
 Hi, [b]Hero[/b], is that you?"
-npc_info = ExtResource("12_j3pfp")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
 [node name="DialogText2" type="Node" parent="NPC/DialogInteraction" unique_id=846494375]
@@ -98,7 +98,6 @@ metadata/_custom_type_script = "uid://cdkb66e1trluv"
 script = ExtResource("11_5l2i7")
 text = "Nice bro!
 Happy to have a hero!"
-npc_info = ExtResource("12_j3pfp")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
 [node name="NPC2" parent="." unique_id=1733830355 instance=ExtResource("7_icgqb")]
@@ -124,3 +123,10 @@ wait_time = 1.0
 [node name="PatrolLocation4" parent="NPC2/NpcBehaviorPatrol" unique_id=1811879167 instance=ExtResource("13_isjcn")]
 modulate = Color(0, 1, 1, 1)
 position = Vector2(-15, -55)
+
+[node name="DialogInteraction" parent="NPC2" unique_id=1352566161 instance=ExtResource("10_isjcn")]
+
+[node name="DialogText" type="Node" parent="NPC2/DialogInteraction" unique_id=1632926614]
+script = ExtResource("11_5l2i7")
+text = "Hi! How's Hero?"
+metadata/_custom_type_script = "uid://cdkb66e1trluv"
