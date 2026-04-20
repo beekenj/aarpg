@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://jhubesonms16" path="res://GUI/dialog_system/audio/voice_blip.wav" id="6_8tyrm"]
 [ext_resource type="FontFile" uid="uid://dplj0nmib8k77" path="res://GUI/fonts/m5x7.ttf" id="6_umqd7"]
 [ext_resource type="Script" uid="uid://c4xka404oubbe" path="res://GUI/dialog_system/scripts/dialog_portrait.gd" id="6_vyuf5"]
+[ext_resource type="Theme" uid="uid://cnc7wy8npws2w" path="res://GUI/dialog_system/dialog_choice_theme.tres" id="9_onhof"]
 
 [sub_resource type="Gradient" id="Gradient_5yhxf"]
 offsets = PackedFloat32Array(0, 0.9876543)
@@ -79,7 +80,7 @@ _data = {
 
 [node name="DialogSystem" type="CanvasLayer" unique_id=786299028]
 process_mode = 3
-layer = 0
+layer = 3
 script = ExtResource("1_5yhxf")
 
 [node name="DialogUI" type="Control" parent="." unique_id=675103747]
@@ -127,8 +128,6 @@ text = "Example [b]Text[/b]!!!
 [wave]Wavy text[/wave]
 [shake][color=orangered]Shaking[/color][/shake]"
 scroll_active = false
-visible_characters = 2
-visible_ratio = 0.060606062
 
 [node name="NameLabel" type="Label" parent="DialogUI" unique_id=761065362]
 layout_mode = 0
@@ -176,3 +175,39 @@ vertical_alignment = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialogUI/DialogProgressContainer" unique_id=1618109614]
 libraries/ = SubResource("AnimationLibrary_2mc8p")
 autoplay = &"default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogUI" unique_id=1916369416]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -96.0
+offset_right = 164.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_onhof")
+alignment = 1
+
+[node name="Button" type="Button" parent="DialogUI/VBoxContainer" unique_id=223752776]
+layout_mode = 2
+text = "Choice 1..."
+
+[node name="Button2" type="Button" parent="DialogUI/VBoxContainer" unique_id=480252653]
+layout_mode = 2
+text = "Choice 1..."
+
+[node name="Button3" type="Button" parent="DialogUI/VBoxContainer" unique_id=1047657620]
+layout_mode = 2
+text = "Choice 1..."
+
+[node name="Button4" type="Button" parent="DialogUI/VBoxContainer" unique_id=1568563162]
+layout_mode = 2
+text = "Choice 1..."
+
+[node name="Button5" type="Button" parent="DialogUI/VBoxContainer" unique_id=570129151]
+layout_mode = 2
+text = "Choice 1..."
