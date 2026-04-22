@@ -8,12 +8,32 @@ var dialog_branches : Array[DialogBranch]
 
 
 func _ready() -> void:
-    if Engine.is_editor_hint():
-        return
-    
+    super()    
     for c in get_children():
         if c is DialogBranch:
             dialog_branches.append(c)
+
+
+func _set_editor_display() -> void:
+    # Set the text based on related DialogText Node
+    set_related_text()
+
+    # Set the dialog choice buttons
+    if dialog_branches.size() < 2:
+        return
+    example_dialog.set_dialog_choice(self)
+
+
+func set_related_text() -> void:
+    # find the sibling
+    var _p = get_parent()
+    var _t = _p.get_child(self.get_index() - 1)
+
+    # set text based on sibling
+    if _t is DialogText:
+        example_dialog.set_dialog_text(_t)
+        example_dialog.content.visible_characters = -1
+
 
 
 func _get_configuration_warnings() -> PackedStringArray:
