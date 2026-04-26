@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b6yv1l2p0bvvb"]
+
+[sub_resource type="Gradient" id="Gradient_y2ty4"]
+colors = PackedColorArray(0, 0, 0, 0, 0.87571764, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rh845"]
+gradient = SubResource("Gradient_y2ty4")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="SplashScene" type="Node2D" unique_id=1551845404]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1843353407]
+offset_right = 482.0
+offset_bottom = 271.0
+color = Color(0, 0.45411357, 1, 0.416)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2056488564]
+offset_top = -58.0
+offset_right = 482.0
+offset_bottom = 271.0
+texture = SubResource("GradientTexture2D_rh845")
