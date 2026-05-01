@@ -3,8 +3,12 @@
 [ext_resource type="Script" uid="uid://d23hyyk1xrlvy" path="res://title_scene/title_scene.gd" id="1_i4gmv"]
 [ext_resource type="PackedScene" uid="uid://twoq7utdfew4" path="res://Tile Maps/dungeon_01.tscn" id="1_uvhto"]
 [ext_resource type="PackedScene" uid="uid://6rme35l44s2r" path="res://Interactables/Dungeon/pushable_statue.tscn" id="2_5xqkb"]
+[ext_resource type="AudioStream" uid="uid://boy1rbjmbjx2n" path="res://title_scene/audio/waves.mp3" id="2_wgj1g"]
 [ext_resource type="Texture2D" uid="uid://b4ucyoesetsog" path="res://title_scene/sprites/title.png" id="3_5xqkb"]
+[ext_resource type="AudioStream" uid="uid://bwxk7jcbxsmkf" path="res://title_scene/audio/menu_focus.wav" id="3_lj5tl"]
+[ext_resource type="AudioStream" uid="uid://c54nib23lkpnu" path="res://title_scene/audio/menu_select.wav" id="4_fkwea"]
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="5_0q24l"]
+[ext_resource type="PackedScene" uid="uid://b6yv1l2p0bvvb" path="res://title_scene/splash_scene.tscn" id="8_lj5tl"]
 
 [sub_resource type="Animation" id="Animation_i4gmv"]
 length = 0.001
@@ -47,6 +51,9 @@ _data = {
 
 [node name="TitleScene" type="Node2D" unique_id=1521169787]
 script = ExtResource("1_i4gmv")
+music = ExtResource("2_wgj1g")
+button_focus_audio = ExtResource("3_lj5tl")
+button_press_audio = ExtResource("4_fkwea")
 
 [node name="Dungeon01_TileMap" parent="." unique_id=1184362757 instance=ExtResource("1_uvhto")]
 rendering_quadrant_size = 32
@@ -121,5 +128,11 @@ grow_horizontal = 2
 text = "continue
 "
 
+[node name="SplashScene" parent="CanvasLayer" unique_id=871006572 instance=ExtResource("8_lj5tl")]
+visible = false
+
 [node name="PlayerSpawn" parent="." unique_id=183080090 instance=ExtResource("5_0q24l")]
 position = Vector2(240, 139)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2125485043]
+max_polyphony = 4

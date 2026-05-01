@@ -1,5 +1,45 @@
 [gd_scene format=3 uid="uid://b6yv1l2p0bvvb"]
 
+[ext_resource type="Script" uid="uid://b0n3ms85443ib" path="res://title_scene/splash_screen.gd" id="1_rh845"]
+
+[sub_resource type="Animation" id="Animation_rh845"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y2ty4"]
+resource_name = "default"
+length = 1.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.90000004, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.4), Color(1, 1, 1, 0.20500001), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rh845"]
+_data = {
+&"RESET": SubResource("Animation_rh845"),
+&"default": SubResource("Animation_y2ty4")
+}
+
 [sub_resource type="Gradient" id="Gradient_y2ty4"]
 colors = PackedColorArray(0, 0, 0, 0, 0.87571764, 0, 1, 1)
 
@@ -8,14 +48,28 @@ gradient = SubResource("Gradient_y2ty4")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
-[node name="SplashScene" type="Node2D" unique_id=1551845404]
+[node name="SplashScene" type="Control" unique_id=871006572]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rh845")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1843353407]
+layout_mode = 0
 offset_right = 482.0
 offset_bottom = 271.0
-color = Color(0, 0.45411357, 1, 0.416)
+color = Color(0, 0.23941751, 0.52630603, 1)
+
+[node name="Logo" type="Control" parent="." unique_id=127416416]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo" unique_id=331119035]
+libraries/ = SubResource("AnimationLibrary_rh845")
+autoplay = &"default"
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2056488564]
+layout_mode = 0
 offset_top = -58.0
 offset_right = 482.0
 offset_bottom = 271.0
