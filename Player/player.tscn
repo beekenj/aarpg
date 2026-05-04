@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4sse476kdci4"]
 
 [ext_resource type="Script" uid="uid://bftmqcoaj8ubg" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
-[ext_resource type="Texture2D" uid="uid://dty317nngfmuc" path="res://Player/Sprites/PlayerSprite02.png" id="2_k53q1"]
+[ext_resource type="Texture2D" uid="uid://nmolkhopa4kd" path="res://Player/Sprites/player_sprite.png" id="2_b1ygp"]
 [ext_resource type="Texture2D" uid="uid://bp3xmqstgm3df" path="res://Player/Sprites/Shadow.png" id="3_00tjw"]
 [ext_resource type="Script" uid="uid://btpd7ndypbfqb" path="res://Player/Scripts/player_state_machine.gd" id="3_btcbx"]
 [ext_resource type="Texture2D" uid="uid://b1hgnpu5442ry" path="res://Player/Sprites/AttackSprite01.png" id="3_vtle1"]
@@ -622,9 +622,9 @@ shape = SubResource("CircleShape2D_edjgo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=768814452]
 position = Vector2(0, -20)
-texture = ExtResource("2_k53q1")
+texture = ExtResource("2_b1ygp")
 hframes = 16
-vframes = 3
+vframes = 8
 
 [node name="ShadowSprite" type="Sprite2D" parent="Sprite2D" unique_id=1929245394]
 modulate = Color(0, 0, 0, 0.78431374)
