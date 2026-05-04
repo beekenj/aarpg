@@ -130,6 +130,7 @@ text = "continue
 
 [node name="SplashScene" parent="CanvasLayer" unique_id=871006572 instance=ExtResource("8_lj5tl")]
 visible = false
+mouse_filter = 2
 
 [node name="PlayerSpawn" parent="." unique_id=183080090 instance=ExtResource("5_0q24l")]
 position = Vector2(240, 139)

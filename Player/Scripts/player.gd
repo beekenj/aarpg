@@ -43,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 
 
 
-func SetDirection() -> bool:
+func set_direction() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 	

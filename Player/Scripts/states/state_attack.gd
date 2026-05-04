@@ -11,8 +11,8 @@ var attacking : bool = false
 
 @onready var walk: State = $"../Walk"
 @onready var idle: State = $"../Idle"
+@onready var charge_attack: State = $'../ChargeAttack'
 @onready var hurt_box: HurtBox = %AttackHurtBox
-
 
 
 # what happens when the player enters this State?
@@ -64,4 +64,6 @@ func HandleInput( _event : InputEvent) -> State:
 
 
 func EndAttack( _newAnimName : String ) -> void:
+	if Input.is_action_pressed("Attack"):
+		state_machine.ChangeState(charge_attack)
 	attacking = false
