@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://4t86nwows4h5"]
+
+[ext_resource type="Script" uid="uid://d0fe6d2oqq8mc" path="res://Interactables/throwable/throwable.gd" id="1_7p4g0"]
+
+[node name="Throwable" type="Area2D" unique_id=1100157288]
+script = ExtResource("1_7p4g0")
