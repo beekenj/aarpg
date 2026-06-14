@@ -24,7 +24,7 @@ func player_interact() -> void:
     # pick up one pot only ...
     if not picked_up:
         # pick up throwable object
-        print("pick up pot")
+        print("pick up pot!")
         pass
 
 
