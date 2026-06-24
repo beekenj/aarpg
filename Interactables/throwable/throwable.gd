@@ -24,8 +24,9 @@ func player_interact() -> void:
     # pick up one pot only ...
     if not picked_up:
         # pick up throwable object
-        print("pick up pot!")
-        pass
+        PlayerManager.player.pickup_item(self)
+        area_entered.disconnect(_on_area_enter)
+        area_exited.disconnect(_on_area_exit)
 
 
 func _on_area_enter(_a : Area2D) -> void:

@@ -17,7 +17,7 @@ var max_hp : int = 6
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
-
+@onready var lift: State = $StateMachine/Lift
 
 
 # Called when the node enters the scene tree for the first time.
@@ -91,6 +91,7 @@ func update_hp(delta : int) -> void:
 	PlayerHud.update_hp(hp, max_hp)
 	pass
 
+
 func make_invulnerable(_duration : float) -> void:
 	invulnerable = true
 	hit_box.monitoring = false
@@ -100,3 +101,8 @@ func make_invulnerable(_duration : float) -> void:
 	invulnerable = false
 	hit_box.monitoring = true
 	pass
+
+
+func pickup_item(_t : Throwable) -> void:
+	state_machine.ChangeState(lift)
+	# store throwable object

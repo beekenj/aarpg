@@ -21,8 +21,10 @@
 [ext_resource type="AudioStream" uid="uid://bnigwe673u4s4" path="res://Player/Audio/hit_player.wav" id="14_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://bnlaf8n8nblyo" path="res://Player/Audio/spin-attack.wav" id="14_hshwv"]
 [ext_resource type="Script" uid="uid://pocmmd1m5ww7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
+[ext_resource type="Script" uid="uid://dmrn4btv7idkr" path="res://Player/Scripts/states/state_lift.gd" id="17_8mwp6"]
 [ext_resource type="Script" uid="uid://cyqbru5cl4rvd" path="res://Player/Scripts/Abilities/abilities.gd" id="17_pisgm"]
 [ext_resource type="PackedScene" uid="uid://k11ta605lnsq" path="res://GeneralNodes/ItemMagnet/item_magnet.tscn" id="18_b1ygp"]
+[ext_resource type="Script" uid="uid://bbbmr83kud5fr" path="res://Player/Scripts/states/state_carry.gd" id="18_qemgg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_edjgo"]
 
@@ -1529,6 +1531,12 @@ script = ExtResource("12_o28un")
 sfx_charged = ExtResource("13_7emwf")
 sfx_spin = ExtResource("14_hshwv")
 metadata/_custom_type_script = "uid://bcpeg2lusu217"
+
+[node name="Lift" type="Node" parent="StateMachine" unique_id=942344052]
+script = ExtResource("17_8mwp6")
+
+[node name="Carry" type="Node" parent="StateMachine" unique_id=553274994]
+script = ExtResource("18_qemgg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1877449310]
 editor_draw_limits = true
