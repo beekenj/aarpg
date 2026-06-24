@@ -33,6 +33,6 @@ func Physics( _delta : float) -> State:
 	return null
 
 
-# What happens with inpu events in this State?
+# What happens with input events in this State?
 func HandleInput( _event : InputEvent) -> State:
 	return null

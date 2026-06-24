@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://pocmmd1m5ww7" path="res://Player/Scripts/push_area.gd" id="14_lfmf2"]
 [ext_resource type="Script" uid="uid://dmrn4btv7idkr" path="res://Player/Scripts/states/state_lift.gd" id="17_8mwp6"]
 [ext_resource type="Script" uid="uid://cyqbru5cl4rvd" path="res://Player/Scripts/Abilities/abilities.gd" id="17_pisgm"]
+[ext_resource type="AudioStream" uid="uid://g542467wkgke" path="res://Player/Audio/huwh.wav" id="18_8viyr"]
 [ext_resource type="PackedScene" uid="uid://k11ta605lnsq" path="res://GeneralNodes/ItemMagnet/item_magnet.tscn" id="18_b1ygp"]
 [ext_resource type="Script" uid="uid://bbbmr83kud5fr" path="res://Player/Scripts/states/state_carry.gd" id="18_qemgg"]
 
@@ -1501,6 +1502,7 @@ show_behind_parent = true
 position = Vector2(0, 20)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/HeldItem" unique_id=1183423047]
+visible = false
 position = Vector2(0, -9)
 texture = ExtResource("7_gpjlu")
 hframes = 16
@@ -1534,6 +1536,7 @@ metadata/_custom_type_script = "uid://bcpeg2lusu217"
 
 [node name="Lift" type="Node" parent="StateMachine" unique_id=942344052]
 script = ExtResource("17_8mwp6")
+lift_audio = ExtResource("18_8viyr")
 
 [node name="Carry" type="Node" parent="StateMachine" unique_id=553274994]
 script = ExtResource("18_qemgg")
