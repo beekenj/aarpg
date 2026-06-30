@@ -6,6 +6,7 @@ const INVENTORY_DATA : InventoryData = preload("res://GUI/pause_menu/inventory/p
 @warning_ignore("unused_signal")
 signal interact_pressed 
 
+var interact_handled : bool = true
 var player : Player
 var player_spawned : bool = false
 
@@ -51,5 +52,6 @@ func play_audio(_audio : AudioStream) -> void:
 	player.audio.play()
 
 
-func emit_interact_pressed() -> void:
+func interact() -> void:
+	interact_handled = false
 	interact_pressed.emit()

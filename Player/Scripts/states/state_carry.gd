@@ -27,15 +27,20 @@ func Exit() -> void:
 	# throw object
 	if throwable:
 		# throw direction
+		if player.direction == Vector2.ZERO:
+			throwable.throw_direction = player.cardinal_direction
+		else:
+			throwable.throw_direction = player.direction
+
 		# were we stunned? if so drop item
 		if state_machine.next_state == stun:
-			# drop item
-			pass
+			throwable.throw_direction = throwable.throw_direction.rotated(PI)
+			throwable.drop()
 		# otherwise throw item
 		else:
-			# throw item
-			pass
-	pass
+			player.audio.stream = throw_audio
+			player.audio.play()
+			throwable.throw()
 
 
 # what happens during the _process update in this State?

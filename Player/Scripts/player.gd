@@ -19,7 +19,7 @@ var max_hp : int = 6
 @onready var audio: AudioStreamPlayer2D = $Audio/AudioStreamPlayer2D
 @onready var lift: State = $StateMachine/Lift
 @onready var held_item: Node2D = $Sprite2D/HeldItem
-
+@onready var carry: State = $StateMachine/Carry
 
 
 # Called when the node enters the scene tree for the first time.
@@ -107,4 +107,4 @@ func make_invulnerable(_duration : float) -> void:
 
 func pickup_item(_t : Throwable) -> void:
 	state_machine.ChangeState(lift)
-	# store throwable object
+	carry.throwable = _t

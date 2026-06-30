@@ -27,11 +27,23 @@ func _ready() -> void:
     object_sprite = throwable.find_child("Sprite2D")
     ground_height = object_sprite.position.y
     animation_player = throwable.find_child("AnimationPlayer")
+    set_physics_process(false)
+
+
+func _physics_process(delta: float) -> void:
+    object_sprite.position.y += vertical_velocity * delta
+    # check to see if sprite hit "ground" then destroy
+    if object_sprite.position.y >= ground_height:
+        destroy()
+    vertical_velocity += gravity_strength * delta
+    throwable.position += throw_direction * throw_speed * delta
 
 
 func player_interact() -> void:
-    # pick up one pot only ...
+    if PlayerManager.interact_handled:
+        return
     if not picked_up:
+        PlayerManager.interact_handled = true
         # pick up throwable object
         disable_collisions(throwable)
         if throwable.get_parent():
@@ -49,8 +61,27 @@ func throw() -> void:
     throwable.position = PlayerManager.player.position
     object_sprite.position.y = -throw_starting_height
     vertical_velocity = -throw_hight_strength
-    # Enable physics
-    # Enable hurt box
+    set_physics_process(true)
+    hurt_box.set_deferred("monitoring", true)
+    hurt_box.did_damage.connect(destroy)
+
+
+func drop() -> void:
+    throwable.get_parent().remove_child(throwable)
+    PlayerManager.player.get_parent().call_deferred("add_child", throwable)
+    throwable.position = PlayerManager.player.position
+    object_sprite.position.y = -50
+    vertical_velocity = -200
+    throw_speed = 100
+    set_physics_process(true)
+
+
+func destroy() -> void:
+    set_physics_process(false)
+    if animation_player:
+        animation_player.play("destroy")
+        await animation_player.animation_finished
+    throwable.queue_free()
 
 
 func disable_collisions(_node : Node) -> void:

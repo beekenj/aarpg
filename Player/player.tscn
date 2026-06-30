@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://g542467wkgke" path="res://Player/Audio/huwh.wav" id="18_8viyr"]
 [ext_resource type="PackedScene" uid="uid://k11ta605lnsq" path="res://GeneralNodes/ItemMagnet/item_magnet.tscn" id="18_b1ygp"]
 [ext_resource type="Script" uid="uid://bbbmr83kud5fr" path="res://Player/Scripts/states/state_carry.gd" id="18_qemgg"]
+[ext_resource type="AudioStream" uid="uid://tfign5084bd4" path="res://Player/Audio/throw.wav" id="20_sm0op"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_edjgo"]
 
@@ -1540,6 +1541,7 @@ lift_audio = ExtResource("18_8viyr")
 
 [node name="Carry" type="Node" parent="StateMachine" unique_id=553274994]
 script = ExtResource("18_qemgg")
+throw_audio = ExtResource("20_sm0op")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1877449310]
 editor_draw_limits = true
