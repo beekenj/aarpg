@@ -10,6 +10,7 @@ var direction : Vector2
 var next_state : State = null
 
 @onready var idle: State = $"../Idle"
+@onready var death: State = $'../Death'
 
 
 func init() -> void:
@@ -26,14 +27,12 @@ func Enter() -> void:
 	player.update_animation("stun")
 	player.make_invulnerable(invulnerable_duration)
 	player.effect_animation_player.play("damaged")
-	pass
 
 
 # what happens when the player exits this State?
 func Exit() -> void:
 	next_state = null
 	player.animation_player.animation_finished.disconnect(_animation_finished)
-	pass
 
 
 # what happens during the _process update in this State?
@@ -54,10 +53,11 @@ func HandleInput( _event : InputEvent) -> State:
 
 func _player_damaged(_hurt_box : HurtBox) -> void:
 	hurt_box = _hurt_box
-	state_machine.ChangeState(self)
-	pass
+	if state_machine.current_state != death:
+		state_machine.ChangeState(self)
 
 
 func _animation_finished(_a : String) -> void:
 	next_state = idle
-	pass
+	if player.hp <= 0:
+		next_state = death

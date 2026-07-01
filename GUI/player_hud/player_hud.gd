@@ -1,8 +1,18 @@
 extends CanvasLayer
 
 
+@export var button_focus_audio : AudioStream = preload("res://title_scene/audio/menu_focus.wav")
+@export var button_select_audio : AudioStream = preload("res://title_scene/audio/menu_select.wav")
+
+
 var hearts : Array[HeartGUI] = []
+
 @onready var hud_control: Control = $HUDControl
+@onready var game_over: Control = $HUDControl/GameOver
+@onready var continue_button: Button = $HUDControl/GameOver/VBoxContainer/ContinueButton
+@onready var title_button: Button = $HUDControl/GameOver/VBoxContainer/TitleButton
+@onready var animation_player: AnimationPlayer = $HUDControl/GameOver/AnimationPlayer
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -12,7 +22,13 @@ func _ready() -> void:
 			child.visible = false
 	PauseMenu.shown.connect(_game_pause)
 	PauseMenu.hidden.connect(_game_unpause)
-	pass
+	
+	hide_game_over_screen()
+	continue_button.focus_entered.connect(play_audio.bind(button_focus_audio))
+	continue_button.pressed.connect(load_game)
+	title_button.focus_entered.connect(play_audio.bind(button_focus_audio))
+	title_button.pressed.connect(title_screen)
+	LevelManager.level_load_started.connect(hide_game_over_screen)
 
 
 func update_hp( _hp : int, _max_hp : int) -> void:
@@ -44,3 +60,49 @@ func _game_pause() -> void:
 
 func _game_unpause() -> void:
 	hud_control.mouse_filter = Control.MOUSE_FILTER_PASS
+
+
+func show_game_over_screen() -> void:
+	game_over.visible = true
+	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
+
+	var can_continue : bool = SaveManager.get_save_file() != null
+	continue_button.visible = can_continue
+
+	animation_player.play("show_game_over")
+	await  animation_player.animation_finished
+	
+	if can_continue:
+		continue_button.grab_focus()
+	else:
+		title_button.grab_focus()
+
+
+func hide_game_over_screen() -> void:
+	game_over.visible = false
+	game_over.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	game_over.modulate = Color(1,1,1,0)
+
+
+func load_game() -> void:
+	play_audio(button_select_audio)
+	await fade_to_black()
+	SaveManager.load_game()
+
+
+func fade_to_black() -> bool:
+	animation_player.play("fade_to_black")
+	await  animation_player.animation_finished
+	PlayerManager.player.revive_player()
+	return true
+
+
+func title_screen() -> void:
+	play_audio(button_select_audio)
+	await fade_to_black()
+	LevelManager.load_new_level("res://title_scene/title_scene.tscn", "", Vector2.ZERO)
+
+
+func play_audio(_a : AudioStream) -> void:
+	audio.stream = _a
+	audio.play()

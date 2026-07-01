@@ -5,5 +5,6 @@ extends CanvasLayer
 
 func fade(_anim : String) -> bool:
 	animation_player.play(_anim)
-	await animation_player.animation_finished
+	if _anim != "fade_in":
+		await animation_player.animation_finished
 	return true
