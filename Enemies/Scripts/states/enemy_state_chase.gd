@@ -25,7 +25,7 @@ func init() -> void:
 ## what happens when the enemy enters this state?
 func enter() -> void:
 	_timer = state_aggro_duration
-	enemy.UpdateAnimation(anim_name)
+	enemy.update_animation(anim_name)
 	if attack_area:
 		attack_area.monitoring = true
 
@@ -41,12 +41,12 @@ func exit() -> void:
 func process(_delta : float) -> EnemyState:
 	if PlayerManager.player.hp <= 0:
 		return next_state
-		
+
 	var new_dir : Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
 	_direction = lerp(_direction, new_dir, turn_rate)
 	enemy.velocity = _direction * chase_speed
-	if enemy.SetDirection(_direction):
-		enemy.UpdateAnimation(anim_name)
+	if enemy.set_direction(_direction):
+		enemy.update_animation(anim_name)
 	
 	if not _can_see_player:
 		_timer -= _delta
