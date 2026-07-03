@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://twoq7utdfew4" path="res://Tile Maps/dungeon_01.tscn" id="2_plxya"]
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="3_oeau7"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="4_q0e7s"]
+[ext_resource type="PackedScene" uid="uid://dj5b5pmsv1i6j" path="res://Props/torches/torch_dungeon.tscn" id="6_oeau7"]
 
 [node name="04" type="Node2D" unique_id=203527221]
 script = ExtResource("1_6xun4")
@@ -22,3 +23,20 @@ position = Vector2(256, 208)
 level = "uid://dol1vmu5qfsat"
 target_transition_area = "LevelTransition3"
 side = 3
+
+[node name="TorchDungeon" parent="." unique_id=1459474270 instance=ExtResource("6_oeau7")]
+position = Vector2(112, -57)
+
+[node name="TorchDungeon2" parent="." unique_id=1819418551 instance=ExtResource("6_oeau7")]
+position = Vector2(400, -57)
+
+[node name="TorchDungeon3" parent="." unique_id=1234445928 instance=ExtResource("6_oeau7")]
+position = Vector2(400, 184)
+
+[node name="TorchDungeon4" parent="." unique_id=1457398453 instance=ExtResource("6_oeau7")]
+position = Vector2(112, 184)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1489844479]
+color = Color(0.30588236, 0.36078432, 0.3254902, 1)
+energy = 0.8
+blend_mode = 2
