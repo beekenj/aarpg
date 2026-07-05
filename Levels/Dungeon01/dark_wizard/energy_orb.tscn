@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cf7rgtbad7ku3"]
+
+[ext_resource type="Script" uid="uid://bea77ed2x0ia4" path="res://Levels/Dungeon01/dark_wizard/scripts/energy_orb.gd" id="1_srwu1"]
+
+[node name="EnergyOrb" type="Node2D" unique_id=539621387]
+script = ExtResource("1_srwu1")
