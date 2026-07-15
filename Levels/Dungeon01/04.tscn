@@ -6,7 +6,126 @@
 [ext_resource type="PackedScene" uid="uid://dbhv13lwe7daf" path="res://Levels/player_spawn.tscn" id="3_oeau7"]
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="4_q0e7s"]
 [ext_resource type="PackedScene" uid="uid://dj5b5pmsv1i6j" path="res://Props/torches/torch_dungeon.tscn" id="6_oeau7"]
+[ext_resource type="Texture2D" uid="uid://c03xh2skbxw0j" path="res://Levels/Dungeon01/dark_wizard/sprites/boss-cloak.png" id="7_7wgl6"]
+[ext_resource type="Script" uid="uid://cs0ie2wybe37j" path="res://GeneralNodes/HurtBox/hurt_box.gd" id="8_2ny6b"]
 [ext_resource type="PackedScene" uid="uid://by2bm0fkj3rpj" path="res://Levels/Dungeon01/dark_wizard/energy_beam.tscn" id="8_7wgl6"]
+[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/Hitbox/hit_box.tscn" id="9_3vx3a"]
+
+[sub_resource type="Gradient" id="Gradient_7wgl6"]
+offsets = PackedFloat32Array(0.24401914, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t4e1e"]
+gradient = SubResource("Gradient_7wgl6")
+width = 48
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_7wgl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t4e1e"]
+resource_name = "down"
+length = 0.3344
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_2ny6b"]
+resource_name = "side"
+length = 0.3344
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_3vx3a"]
+resource_name = "up"
+length = 0.3344
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ny6b"]
+_data = {
+&"RESET": SubResource("Animation_7wgl6"),
+&"down": SubResource("Animation_t4e1e"),
+&"side": SubResource("Animation_2ny6b"),
+&"up": SubResource("Animation_3vx3a")
+}
+
+[sub_resource type="Gradient" id="Gradient_t4e1e"]
+offsets = PackedFloat32Array(0.34449762, 1)
+colors = PackedColorArray(0.77254903, 0, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ny6b"]
+gradient = SubResource("Gradient_t4e1e")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ny6b"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vx3a"]
+radius = 25.0
+
+[sub_resource type="Gradient" id="Gradient_q0e7s"]
+offsets = PackedFloat32Array(0.58373207, 0.8277512, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7wgl6"]
+gradient = SubResource("Gradient_q0e7s")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="04" type="Node2D" unique_id=203527221]
 script = ExtResource("1_6xun4")
@@ -17,7 +136,7 @@ rendering_quadrant_size = 32
 layer_0/tile_data = PackedInt32Array(-65535, 655360, 3, 1, 655360, 3, -65534, 720896, 3, 2, 720896, 3, -65536, 589824, 3, 0, 589824, 3, -131072, 589824, 3, -131071, 655360, 3, -131070, 720896, 3, 196608, 589824, 3, 262144, 589824, 3, 327680, 589824, 3, 196609, 655360, 3, 262145, 655360, 3, 327681, 655360, 3, 196610, 720896, 3, 262146, 720896, 3, 327682, 720896, 3, -327677, 786432, 0, -262141, 786432, 1, -196605, 786432, 2, -327676, 262144, 5, -262140, 262144, 6, -196604, 262144, 7, -327675, 458752, 5, -262139, 458752, 6, -196603, 458752, 7, -327674, 786432, 0, -262138, 786432, 1, -196602, 786432, 2, -327673, 786432, 0, -262137, 786432, 1, -196601, 786432, 2, -327672, 786432, 0, -262136, 786432, 1, -196600, 786432, 2, -327671, 786432, 0, -262135, 786432, 1, -196599, 786432, 2, -327670, 262144, 5, -262134, 262144, 6, -196598, 262144, 7, -327669, 458752, 5, -262133, 458752, 6, -196597, 458752, 7, -327668, 786432, 0, -262132, 786432, 1, -196596, 786432, 2, -327667, 851968, 0, -262131, 851968, 1, -196595, 851968, 2, -327666, 917504, 0, -262130, 917504, 1, -196594, 917504, 2, -327680, 589824, 0, -262144, 589824, 1, -196608, 589824, 2, -327679, 655360, 0, -262143, 655360, 1, -196607, 655360, 2, -327678, 720896, 0, -262142, 720896, 1, -196606, 720896, 2, 393216, 589824, 4, 458752, 589824, 5, 524288, 589824, 6, 393217, 655360, 4, 458753, 655360, 5, 524289, 655360, 6, 393218, 720896, 4, 458754, 720896, 5, 524290, 720896, 6, 393219, 786432, 4, 458755, 786432, 5, 524291, 786432, 6, 393220, 0, 5, 458756, 0, 6, 524292, 0, 7, 393221, 196608, 5, 458757, 196608, 6, 524293, 196608, 7, 393222, 0, 5, 458758, 0, 6, 524294, 0, 7, 393223, 65536, 5, 458759, 65536, 6, 524295, 65536, 7, 393224, 131072, 5, 458760, 131072, 6, 524296, 131072, 7, 393225, 196608, 5, 458761, 196608, 6, 524297, 196608, 7, 393226, 0, 5, 458762, 0, 6, 524298, 0, 7, 393228, 786432, 4, 458764, 786432, 5, 524300, 786432, 6, 393229, 851968, 4, 458765, 851968, 5, 524301, 851968, 6, 393230, 917504, 4, 458766, 917504, 5, 524302, 917504, 6, 393227, 196608, 5, 458763, 196608, 6, 524299, 196608, 7, -131069, 196608, 1, -131068, 196608, 2, -131067, 0, 4, -131066, 196608, 0, -131065, 65536, 4, -131064, 65536, 1, -131063, 131072, 1, -131062, 131072, 0, -131061, 65536, 0, -131060, 196608, 2, -131059, 851968, 3, -131058, 917504, 3, -65522, 917504, 3, -65523, 851968, 3, -65524, 131072, 1, -65525, 0, 3, -65526, 131072, 2, -65527, 0, 4, -65528, 0, 4, -65529, 131072, 0, -65530, 0, 4, -65531, 0, 2, -65532, 65536, 1, -65533, 65536, 3, 3, 131072, 2, 4, 65536, 2, 5, 0, 2, 6, 0, 1, 7, 131072, 1, 8, 196608, 2, 9, 196608, 0, 10, 65536, 1, 11, 131072, 1, 12, 196608, 1, 13, 851968, 3, 14, 917504, 3, 65536, 589824, 3, 65537, 655360, 3, 65538, 720896, 3, 65539, 0, 2, 65540, 65536, 0, 65541, 0, 3, 65542, 65536, 3, 65543, 65536, 1, 65544, 196608, 2, 65545, 0, 3, 65546, 131072, 1, 65547, 131072, 2, 65548, 196608, 0, 65549, 851968, 3, 65550, 917504, 3, 131086, 917504, 3, 131085, 851968, 3, 131084, 0, 2, 131083, 65536, 0, 131082, 196608, 0, 131081, 0, 2, 131080, 0, 4, 131079, 65536, 3, 131078, 131072, 2, 131077, 0, 0, 131076, 0, 0, 131075, 65536, 0, 131074, 720896, 3, 131073, 655360, 3, 131072, 589824, 3, 196611, 65536, 2, 262147, 65536, 2, 327683, 65536, 2, 327684, 131072, 2, 327685, 0, 4, 327686, 65536, 1, 327687, 65536, 3, 327688, 0, 3, 327689, 0, 0, 327690, 0, 1, 327691, 65536, 1, 327692, 0, 4, 327693, 851968, 3, 327694, 917504, 3, 262158, 917504, 3, 196622, 917504, 3, 196621, 851968, 3, 196620, 196608, 2, 196619, 0, 2, 196618, 131072, 2, 196617, 0, 0, 196616, 65536, 3, 196615, 0, 1, 196614, 65536, 4, 196613, 65536, 1, 196612, 65536, 4, 262148, 0, 4, 262149, 65536, 3, 262150, 196608, 2, 262151, 65536, 1, 262152, 196608, 0, 262153, 196608, 0, 262154, 0, 0, 262155, 0, 0, 262156, 65536, 3, 262157, 851968, 3, -327665, 983040, 0, -262129, 983040, 1, -196593, 983040, 2, -131057, 983040, 3, -65521, 983040, 3, 15, 983040, 3, 65551, 983040, 3, 131087, 983040, 3, 196623, 983040, 3, 262159, 983040, 3, 327695, 983040, 3, 393231, 983040, 4, 458767, 983040, 5, 524303, 983040, 6)
 
 [node name="PlayerSpawn" parent="." unique_id=183080090 instance=ExtResource("3_oeau7")]
-position = Vector2(258, 8)
+position = Vector2(257, 171)
 
 [node name="LevelTransition" parent="." unique_id=552162319 instance=ExtResource("4_q0e7s")]
 position = Vector2(256, 208)
@@ -42,6 +161,91 @@ color = Color(0.30588236, 0.36078432, 0.3254902, 1)
 energy = 0.8
 blend_mode = 2
 
-[node name="EnergyBeam" parent="." unique_id=1766771408 instance=ExtResource("8_7wgl6")]
-position = Vector2(6, 73)
-use_timer = true
+[node name="DarkWizardBoss" type="Node2D" parent="." unique_id=1784832440]
+y_sort_enabled = true
+
+[node name="BossNode" type="Node2D" parent="DarkWizardBoss" unique_id=447632266]
+position = Vector2(256, 63)
+
+[node name="ShadowSprite" type="Sprite2D" parent="DarkWizardBoss/BossNode" unique_id=572109027]
+texture = SubResource("GradientTexture2D_t4e1e")
+
+[node name="CloakSprite" type="Sprite2D" parent="DarkWizardBoss/BossNode" unique_id=1038850925]
+modulate = Color(1.863, 1.2289872, 1.5465844, 1)
+position = Vector2(0, -34)
+texture = ExtResource("7_7wgl6")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DarkWizardBoss/BossNode/CloakSprite" unique_id=1457965401]
+libraries/ = SubResource("AnimationLibrary_2ny6b")
+autoplay = &"down"
+
+[node name="PointLight2D" type="PointLight2D" parent="DarkWizardBoss/BossNode" unique_id=2045042711]
+energy = 0.75
+texture = SubResource("GradientTexture2D_2ny6b")
+
+[node name="HurtBox" type="Area2D" parent="DarkWizardBoss/BossNode" unique_id=1372336298]
+position = Vector2(0, -16)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_2ny6b")
+metadata/_custom_type_script = "uid://cs0ie2wybe37j"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DarkWizardBoss/BossNode/HurtBox" unique_id=909035248]
+shape = SubResource("CircleShape2D_2ny6b")
+debug_color = Color(0.7021107, 0, 0.03876, 0)
+
+[node name="HitBox" parent="DarkWizardBoss/BossNode" unique_id=1477756850 instance=ExtResource("9_3vx3a")]
+position = Vector2(0, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DarkWizardBoss/BossNode/HitBox" unique_id=389033007]
+shape = SubResource("CircleShape2D_3vx3a")
+debug_color = Color(0.6875111, 0.7021107, 0, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="DarkWizardBoss/BossNode" unique_id=926301340]
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DarkWizardBoss/BossNode" unique_id=1395038138]
+
+[node name="BeamAttacks" type="Node2D" parent="DarkWizardBoss" unique_id=1152393047]
+visible = false
+
+[node name="EB_H1" parent="DarkWizardBoss/BeamAttacks" unique_id=574225703 instance=ExtResource("8_7wgl6")]
+position = Vector2(9, -47)
+
+[node name="EB_H2" parent="DarkWizardBoss/BeamAttacks" unique_id=1766771408 instance=ExtResource("8_7wgl6")]
+position = Vector2(8, 56)
+
+[node name="EB_H3" parent="DarkWizardBoss/BeamAttacks" unique_id=577274364 instance=ExtResource("8_7wgl6")]
+position = Vector2(9, 164)
+
+[node name="EB_V1" parent="DarkWizardBoss/BeamAttacks" unique_id=1985002069 instance=ExtResource("8_7wgl6")]
+position = Vector2(144, 112)
+rotation = 1.5707964
+
+[node name="EB_V2" parent="DarkWizardBoss/BeamAttacks" unique_id=2000572822 instance=ExtResource("8_7wgl6")]
+position = Vector2(256, 99)
+rotation = 1.5707964
+
+[node name="EB_V3" parent="DarkWizardBoss/BeamAttacks" unique_id=1416786721 instance=ExtResource("8_7wgl6")]
+position = Vector2(368, 105)
+rotation = 1.5707964
+
+[node name="PositionTargets" type="Node2D" parent="DarkWizardBoss" unique_id=631061207]
+
+[node name="Sprite2D4" type="Sprite2D" parent="DarkWizardBoss/PositionTargets" unique_id=2105660377]
+position = Vector2(256, -49)
+texture = SubResource("GradientTexture2D_7wgl6")
+
+[node name="Sprite2D" type="Sprite2D" parent="DarkWizardBoss/PositionTargets" unique_id=381987725]
+position = Vector2(400, 63)
+texture = SubResource("GradientTexture2D_7wgl6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="DarkWizardBoss/PositionTargets" unique_id=1270748586]
+position = Vector2(256, 176)
+texture = SubResource("GradientTexture2D_7wgl6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="DarkWizardBoss/PositionTargets" unique_id=265774516]
+position = Vector2(112, 64)
+texture = SubResource("GradientTexture2D_7wgl6")
