@@ -6,7 +6,6 @@ var value : bool = false
 
 func _ready() -> void:
 	get_value()
-	pass
 
 
 func set_value() -> void:
