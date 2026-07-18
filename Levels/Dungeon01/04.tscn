@@ -439,6 +439,41 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/6/use_blend = true
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8, 1.1, 1.4, 1.7, 2, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [Vector2(10, -32)],
+"method": &"explosion"
+}, {
+"args": [Vector2(2, -15)],
+"method": &"explosion"
+}, {
+"args": [Vector2(-14, -36)],
+"method": &"explosion"
+}, {
+"args": [Vector2(12, -29)],
+"method": &"explosion"
+}, {
+"args": [Vector2(-2, -22)],
+"method": &"explosion"
+}, {
+"args": [Vector2(2, -27)],
+"method": &"explosion"
+}, {
+"args": [Vector2(6, -32)],
+"method": &"explosion"
+}, {
+"args": [Vector2(8, -24)],
+"method": &"explosion"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_57pam"]
 resource_name = "disappear"
@@ -705,7 +740,7 @@ blend_mode = 2
 [node name="DarkWizardBoss" type="Node2D" parent="." unique_id=1784832440]
 y_sort_enabled = true
 script = ExtResource("7_57pam")
-max_hp = 3
+max_hp = 1
 
 [node name="PersistentDataHandler" parent="DarkWizardBoss" unique_id=1164111152 instance=ExtResource("7_sp03e")]
 position = Vector2(256, 63)

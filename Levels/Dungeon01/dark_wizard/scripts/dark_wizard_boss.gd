@@ -1,6 +1,8 @@
 extends Node2D
 class_name DarkWizardBoss
 
+const ENERGY_EXPLOSION_SCENE : PackedScene = preload("res://Levels/Dungeon01/dark_wizard/energy_explosion.tscn")
+
 @export var max_hp : int = 10
 var hp : int = 10
 
@@ -42,9 +44,28 @@ func damage_taken(_hurt_box : HurtBox) -> void:
     animation_player_damaged.queue("default")
 
     if hp < 1:
-        print("Boss defeated")
+        defeat()
 
 
 func play_audio(_a : AudioStream) -> void:
     audio.stream = _a
     audio.play()
+
+
+func defeat() -> void:
+    animation_player.play("destroy")
+    enable_hit_boxes(false)
+    persistent_data_handler.set_value()
+    await animation_player.animation_finished
+    # reopen the room
+
+
+func enable_hit_boxes(_v : bool = true) -> void:
+    hit_box.set_deferred("monitorable", _v)
+    hurt_box.set_deferred("monitoring", _v)
+
+
+func explosion(_p : Vector2 = Vector2.ZERO) -> void:
+    var e : Node2D = ENERGY_EXPLOSION_SCENE.instantiate()
+    e.global_position = boss_node.global_position + _p
+    get_parent().add_child.call_deferred(e)
