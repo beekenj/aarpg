@@ -23,7 +23,7 @@ var invulnerable : bool = false
 func _ready() -> void:
 	state_machine.initialize(self)
 	player = PlayerManager.player
-	hit_box.Damaged.connect(_take_damage)
+	hit_box.damaged.connect(_take_damage)
 	pass
 
 

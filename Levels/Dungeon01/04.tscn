@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8vv686s1e0db" path="res://Levels/level_transition.tscn" id="4_q0e7s"]
 [ext_resource type="PackedScene" uid="uid://dj5b5pmsv1i6j" path="res://Props/torches/torch_dungeon.tscn" id="6_oeau7"]
 [ext_resource type="Texture2D" uid="uid://c03xh2skbxw0j" path="res://Levels/Dungeon01/dark_wizard/sprites/boss-cloak.png" id="7_7wgl6"]
+[ext_resource type="Script" uid="uid://dtyla5iwdy0dc" path="res://Levels/Dungeon01/dark_wizard/scripts/dark_wizard_boss.gd" id="7_57pam"]
 [ext_resource type="PackedScene" uid="uid://b6mb4dbxn2kf0" path="res://GeneralNodes/PersistentDataHandler/persistent_data_handler.tscn" id="7_sp03e"]
 [ext_resource type="Script" uid="uid://cs0ie2wybe37j" path="res://GeneralNodes/HurtBox/hurt_box.gd" id="8_2ny6b"]
 [ext_resource type="Texture2D" uid="uid://ctpf04tjjj2cg" path="res://Levels/Dungeon01/dark_wizard/sprites/boss-hand.png" id="8_3vx3a"]
@@ -602,6 +603,59 @@ _data = {
 &"idle": SubResource("Animation_sp03e")
 }
 
+[sub_resource type="Animation" id="Animation_4wfmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_phkn5"]
+resource_name = "damaged"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(2.454227, 2.0553277, 1.8247963, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4gqtb"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CloakSprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8ltt"]
+_data = {
+&"RESET": SubResource("Animation_4wfmf"),
+&"damaged": SubResource("Animation_phkn5"),
+&"default": SubResource("Animation_4gqtb")
+}
+
 [sub_resource type="Gradient" id="Gradient_q0e7s"]
 offsets = PackedFloat32Array(0.58373207, 0.8277512, 1)
 colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0)
@@ -650,11 +704,14 @@ blend_mode = 2
 
 [node name="DarkWizardBoss" type="Node2D" parent="." unique_id=1784832440]
 y_sort_enabled = true
+script = ExtResource("7_57pam")
+max_hp = 3
+
+[node name="PersistentDataHandler" parent="DarkWizardBoss" unique_id=1164111152 instance=ExtResource("7_sp03e")]
+position = Vector2(256, 63)
 
 [node name="BossNode" type="Node2D" parent="DarkWizardBoss" unique_id=447632266]
 position = Vector2(256, 63)
-
-[node name="PersistentDataHandler" parent="DarkWizardBoss/BossNode" unique_id=1164111152 instance=ExtResource("7_sp03e")]
 
 [node name="ShadowSprite" type="Sprite2D" parent="DarkWizardBoss/BossNode" unique_id=572109027]
 texture = SubResource("GradientTexture2D_t4e1e")
@@ -738,6 +795,10 @@ bus = &"SFX"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DarkWizardBoss/BossNode" unique_id=1395038138]
 libraries/ = SubResource("AnimationLibrary_57pam")
 autoplay = &"idle"
+
+[node name="AnimationPlayer_Damaged" type="AnimationPlayer" parent="DarkWizardBoss/BossNode" unique_id=997398721]
+libraries/ = SubResource("AnimationLibrary_k8ltt")
+autoplay = &"default"
 
 [node name="BeamAttacks" type="Node2D" parent="DarkWizardBoss" unique_id=1152393047]
 visible = false
