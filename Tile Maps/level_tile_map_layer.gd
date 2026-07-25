@@ -1,4 +1,4 @@
-class_name LevelTileMap extends TileMapLayer
+class_name LevelTileMapLayer extends TileMapLayer
 
 @export var tile_size : float = 32
 
