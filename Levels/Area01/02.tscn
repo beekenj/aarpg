@@ -81,7 +81,6 @@ position = Vector2(145, 174)
 npc_resource = SubResource("Resource_5l2i7")
 
 [node name="NpcBehaviorWander" parent="NPC" unique_id=335579999 instance=ExtResource("8_ua1y0")]
-wander_range = 1
 
 [node name="DialogInteraction" parent="NPC" unique_id=175343357 instance=ExtResource("10_isjcn")]
 
