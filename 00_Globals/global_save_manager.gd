@@ -17,7 +17,9 @@ var current_save : Dictionary = {
 	},
 	items = [],
 	persistence = [],
-	quests = [],
+	quests = [
+		# {title = "not fount", is_complete = false, completed_steps = ['']}
+	],
 }
 
 
