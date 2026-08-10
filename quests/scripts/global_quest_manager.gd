@@ -24,9 +24,13 @@ func _unhandled_input(event: InputEvent) -> void:
         # print(find_quest_by_title("short quest"))
         # print(get_quest_index_by_title("Recover Lost Magical Flute"))
         # print(get_quest_index_by_title("short quest"))
-        update_quest("short quest")
-        update_quest("Recover Lost Magical Flute", "Find the Magical Flute")
+
+        print("before: ", current_quests)
+        # update_quest("short quest")
+        # update_quest("Recover Lost Magical Flute", "Find the Magical Flute")
         update_quest("long quest", "", true)
+        print("after: ", current_quests)
+        print("==========================================================")
 
 
 # gather all quest resources and add to quest array
