@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3suo2mfmm8ju" path="res://GUI/pause_menu/inventory/scripts/inventory_slot_ui.gd" id="1_d72hl"]
 [ext_resource type="Texture2D" uid="uid://mtjs7xgyf1yv" path="res://Items/sprites/items.png" id="1_eqhwg"]
+[ext_resource type="FontFile" uid="uid://dplj0nmib8k77" path="res://GUI/fonts/m5x7.ttf" id="3_fvlqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d72hl"]
 atlas = ExtResource("1_eqhwg")
@@ -26,6 +27,7 @@ stretch_mode = 3
 layout_mode = 0
 offset_right = 31.0
 offset_bottom = 23.0
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_fvlqd")
+theme_override_font_sizes/font_size = 12
 text = "99"
 horizontal_alignment = 2

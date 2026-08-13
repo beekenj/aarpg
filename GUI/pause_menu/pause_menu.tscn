@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fft2clkfyt2x"]
 
 [ext_resource type="Script" uid="uid://dakb76x6i1o0v" path="res://GUI/pause_menu/pause_menu.gd" id="1_4w82k"]
+[ext_resource type="FontFile" uid="uid://cbsuvg8x0ke6k" path="res://GUI/fonts/Abaddon Bold.ttf" id="2_sn1ji"]
 [ext_resource type="Texture2D" uid="uid://mtjs7xgyf1yv" path="res://Items/sprites/items.png" id="2_yiq8o"]
 [ext_resource type="Script" uid="uid://b51mtob3pito7" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_36pfd"]
 [ext_resource type="PackedScene" uid="uid://ceoaksai3yr1" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_rsqrg"]
@@ -76,7 +77,9 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("2_sn1ji")
+theme_override_font_sizes/font_size = 16
+text = "Test"
 horizontal_alignment = 1
 autowrap_mode = 2
 
