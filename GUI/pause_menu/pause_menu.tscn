@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b51mtob3pito7" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_36pfd"]
 [ext_resource type="PackedScene" uid="uid://ceoaksai3yr1" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_rsqrg"]
 [ext_resource type="Resource" uid="uid://blj4h7rnd0fmh" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="4_ewgu5"]
+[ext_resource type="PackedScene" uid="uid://bmrf0v2uwfppr" path="res://GUI/pause_menu/quests/quest_item.tscn" id="7_8rjl7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsqrg"]
 atlas = ExtResource("2_yiq8o")
@@ -74,9 +75,10 @@ offset_top = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Inventory" type="Control" parent="Control/TabContainer" unique_id=929673819]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -134,9 +136,49 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Quests" type="Control" parent="Control/TabContainer" unique_id=39240026]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quests" unique_id=1328222590]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 234.0
+offset_bottom = 214.0
+follow_focus = true
+scroll_vertical_custom_step = 100.0
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/TabContainer/Quests/ScrollContainer" unique_id=1288426529]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer" unique_id=956659980]
+layout_mode = 2
+
+[node name="QuestItem" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1060802913 instance=ExtResource("7_8rjl7")]
+layout_mode = 2
+
+[node name="QuestItem2" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1496662932 instance=ExtResource("7_8rjl7")]
+layout_mode = 2
+
+[node name="QuestItem3" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1842454621 instance=ExtResource("7_8rjl7")]
+layout_mode = 2
+
+[node name="QuestItem4" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1103822547 instance=ExtResource("7_8rjl7")]
+layout_mode = 2
+
+[node name="QuestItem5" parent="Control/TabContainer/Quests/ScrollContainer/MarginContainer/VBoxContainer" unique_id=374120673 instance=ExtResource("7_8rjl7")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quests" unique_id=497313034]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 28.0
+offset_right = 313.0
+offset_bottom = 68.0
 
 [node name="System" type="Control" parent="Control/TabContainer" unique_id=1068959914]
 visible = false
