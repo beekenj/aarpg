@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ceoaksai3yr1" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_rsqrg"]
 [ext_resource type="Resource" uid="uid://blj4h7rnd0fmh" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="4_ewgu5"]
 [ext_resource type="PackedScene" uid="uid://bmrf0v2uwfppr" path="res://GUI/pause_menu/quests/quest_item.tscn" id="7_8rjl7"]
+[ext_resource type="Script" uid="uid://c8ohe610dcc58" path="res://GUI/pause_menu/quests_ui.gd" id="7_dvxeg"]
+[ext_resource type="FontFile" uid="uid://dplj0nmib8k77" path="res://GUI/fonts/m5x7.ttf" id="9_iqcer"]
+[ext_resource type="PackedScene" uid="uid://ctltdrmxdqytd" path="res://GUI/pause_menu/quests/quest_step_item.tscn" id="10_qikl0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsqrg"]
 atlas = ExtResource("2_yiq8o")
@@ -137,6 +140,7 @@ autowrap_mode = 2
 
 [node name="Quests" type="Control" parent="Control/TabContainer" unique_id=39240026]
 layout_mode = 2
+script = ExtResource("7_dvxeg")
 metadata/_tab_index = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/TabContainer/Quests" unique_id=1328222590]
@@ -175,10 +179,38 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/TabContainer/Quests" unique_id=497313034]
 layout_mode = 0
-offset_left = 273.0
-offset_top = 28.0
-offset_right = 313.0
-offset_bottom = 68.0
+offset_left = 250.0
+offset_top = 20.0
+offset_right = 465.0
+offset_bottom = 64.0
+
+[node name="TitleLabel" type="Label" parent="Control/TabContainer/Quests/VBoxContainer" unique_id=1290377891]
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sn1ji")
+text = "Quest Title"
+autowrap_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="Control/TabContainer/Quests/VBoxContainer" unique_id=1347029472]
+modulate = Color(0.72360146, 0.72360146, 0.72360146, 1)
+custom_minimum_size = Vector2(215, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_iqcer")
+text = "Quest description"
+autowrap_mode = 2
+
+[node name="SpacerControl" type="Control" parent="Control/TabContainer/Quests/VBoxContainer" unique_id=846885244]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="QuestStepItem" parent="Control/TabContainer/Quests/VBoxContainer" unique_id=1569032396 instance=ExtResource("10_qikl0")]
+layout_mode = 2
+
+[node name="QuestStepItem2" parent="Control/TabContainer/Quests/VBoxContainer" unique_id=1325033886 instance=ExtResource("10_qikl0")]
+layout_mode = 2
+
+[node name="QuestStepItem3" parent="Control/TabContainer/Quests/VBoxContainer" unique_id=338838871 instance=ExtResource("10_qikl0")]
+layout_mode = 2
 
 [node name="System" type="Control" parent="Control/TabContainer" unique_id=1068959914]
 visible = false

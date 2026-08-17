@@ -22,10 +22,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		# print(get_quest_index_by_title("short quest"))
 
 		# print("before: ", current_quests)
-		# update_quest("short quest", "", true)
-		# update_quest("Recover Lost Magical Flute", "Find the Magical Flute")
+		update_quest("short quest", "", true)
+		update_quest("long quest", "step 1")
+		update_quest("long quest", "step 2")
+		update_quest("Recover Lost Magical Flute")
+		update_quest("Recover Lost Magical Flute", "", true)
 		print("quests: ", current_quests)
-		# update_quest("Recover Lost Magical Flute", "", true)
 		# print("after: ", current_quests)
 		# print("==========================================================")
 
