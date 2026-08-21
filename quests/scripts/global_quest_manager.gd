@@ -22,11 +22,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		# print(get_quest_index_by_title("short quest"))
 
 		# print("before: ", current_quests)
+		update_quest("Recover Lost Magical Flute")
+		update_quest("Recover Lost Magical Flute", "", true)
 		update_quest("short quest", "", true)
 		update_quest("long quest", "step 1")
 		update_quest("long quest", "step 2")
-		update_quest("Recover Lost Magical Flute")
-		update_quest("Recover Lost Magical Flute", "", true)
 		print("quests: ", current_quests)
 		# print("after: ", current_quests)
 		# print("==========================================================")
@@ -38,7 +38,7 @@ func gather_quest_data() -> void:
 	quests.clear()
 	for q in quest_files:
 		quests.append(load(QUEST_DATA_LOCATION + "/" + q) as Quest)
-	print("quests count: ", quests.size())
+	# print("quests count: ", quests.size())
 
 
 # update the status of a quest
@@ -105,5 +105,26 @@ func get_quest_index_by_title(_title : String) -> int:
 	return -1
 
 
+# sort quest alphabetically with all completed quests after incomplete
 func sort_quests() -> void:
-	pass
+	var active_quests : Array = []
+	var completed_quests : Array = []
+
+	for q in current_quests:
+		if q.is_complete:
+			completed_quests.append(q)
+		else:
+			active_quests.append(q)
+
+	active_quests.sort_custom(sort_quests_ascending)
+	completed_quests.sort_custom(sort_quests_ascending)
+
+	current_quests = active_quests
+	current_quests.append_array(completed_quests)
+	
+
+func sort_quests_ascending(a, b):
+	if a.title.to_lower() < b.title.to_lower():
+		return true
+	else:
+		return false
