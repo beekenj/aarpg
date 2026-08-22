@@ -83,7 +83,7 @@ func disperse_quest_rewards(_q : Quest) -> void:
 # provide a quest and return the current quest associated with it
 func find_quest(_quest : Quest) -> Dictionary:
 	for q in current_quests:
-		if q.title == _quest.title:
+		if q.title.to_lower() == _quest.title.to_lower():
 			return q
 	return {title = "not found", is_complete = false, completed_steps = ['']}
 
