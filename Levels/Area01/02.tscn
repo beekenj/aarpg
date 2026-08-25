@@ -19,6 +19,9 @@
 [ext_resource type="Script" uid="uid://dxh704n11u36o" path="res://Interactables/dialog/scripts/dialog_choice.gd" id="17_xiy2e"]
 [ext_resource type="Script" uid="uid://dxq1ime3bskty" path="res://Interactables/dialog/scripts/dialog_branch.gd" id="18_j3pfp"]
 [ext_resource type="PackedScene" uid="uid://xtl5m8vtdlsl" path="res://Props/pot/pot.tscn" id="19_m4nom"]
+[ext_resource type="PackedScene" uid="uid://c04y20xn0hr4k" path="res://Interactables/Dungeon/pressure_plate.tscn" id="20_wrnjp"]
+[ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="21_xflnv"]
+[ext_resource type="Resource" uid="uid://fp6nlphlp463" path="res://quests/long_quest.tres" id="22_wrnjp"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_isjcn"]
 load_path = "res://.godot/imported/npc_portrait_01.png-0d842fbb89fe27788e3aacb25efe8d8e.ctex"
@@ -77,7 +80,7 @@ level = "uid://cf5wpjwalb6uc"
 side = 2
 
 [node name="NPC" parent="." unique_id=2120481944 instance=ExtResource("7_icgqb")]
-position = Vector2(145, 174)
+position = Vector2(147.04114, 174)
 npc_resource = SubResource("Resource_5l2i7")
 
 [node name="NpcBehaviorWander" parent="NPC" unique_id=335579999 instance=ExtResource("8_ua1y0")]
@@ -178,3 +181,39 @@ position = Vector2(145, 239)
 
 [node name="Pot2" parent="." unique_id=1376287134 instance=ExtResource("19_m4nom")]
 position = Vector2(121, 239)
+
+[node name="PressurePlate" parent="." unique_id=686867735 instance=ExtResource("20_wrnjp")]
+position = Vector2(299, 253)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate" unique_id=1321230352 instance=ExtResource("21_xflnv")]
+linked_quest = ExtResource("22_wrnjp")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 0 - N/A
+Compete: false"
+
+[node name="PressurePlate2" parent="." unique_id=93475301 instance=ExtResource("20_wrnjp")]
+position = Vector2(341, 253)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate2" unique_id=1245028526 instance=ExtResource("21_xflnv")]
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 1 - Step 1
+Compete: false"
+
+[node name="PressurePlate3" parent="." unique_id=989891511 instance=ExtResource("20_wrnjp")]
+position = Vector2(383, 253)
+
+[node name="QuestAdvanceTrigger" parent="PressurePlate3" unique_id=980625935 instance=ExtResource("21_xflnv")]
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 2 - Step 2
+Compete: false"
+
+[connection signal="activated" from="PressurePlate" to="PressurePlate/QuestAdvanceTrigger" method="advance_quest"]
+[connection signal="activated" from="PressurePlate2" to="PressurePlate2/QuestAdvanceTrigger" method="advance_quest"]
+[connection signal="activated" from="PressurePlate3" to="PressurePlate3/QuestAdvanceTrigger" method="advance_quest"]

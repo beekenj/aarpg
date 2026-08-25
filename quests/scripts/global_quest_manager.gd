@@ -10,7 +10,6 @@ var current_quests : Array = []
 
 
 func _ready() -> void:
-	# gather all quests
 	gather_quest_data()
 
 
@@ -22,11 +21,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		# print(get_quest_index_by_title("short quest"))
 
 		# print("before: ", current_quests)
-		update_quest("Recover Lost Magical Flute")
-		update_quest("Recover Lost Magical Flute", "", true)
-		update_quest("short quest", "", true)
-		update_quest("long quest", "step 1")
-		update_quest("long quest", "step 2")
+		# update_quest("Recover Lost Magical Flute")
+		# update_quest("Recover Lost Magical Flute", "", true)
+		# update_quest("short quest", "", true)
+		# update_quest("long quest", "step 1")
+		# update_quest("long quest", "step 2")
 		print("quests: ", current_quests)
 		# print("after: ", current_quests)
 		# print("==========================================================")
@@ -52,7 +51,7 @@ func update_quest(_title : String, _completed_step : String = '', _is_complete :
 				completed_steps = []
 		}
 		if _completed_step != '':
-			new_quest.completed_steps.append(_completed_step)
+			new_quest.completed_steps.append(_completed_step.to_lower())
 		current_quests.append(new_quest)
 		quest_updated.emit(new_quest)
 
@@ -61,7 +60,7 @@ func update_quest(_title : String, _completed_step : String = '', _is_complete :
 		# quest was found, update it
 		var q = current_quests[quest_index]
 		if _completed_step != '' and q.completed_steps.has(_completed_step) == false:
-			q.completed_steps.append(_completed_step)
+			q.completed_steps.append(_completed_step.to_lower())
 		q.is_complete = _is_complete
 		quest_updated.emit(q)
 

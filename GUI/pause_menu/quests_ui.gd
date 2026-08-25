@@ -42,14 +42,12 @@ func update_quest_details(q: Quest) -> void:
 	description_label.text = q.description
 
 	var quest_save = QuestManager.find_quest(q)
-	print(quest_save.title)
 
 	for step in q.steps:
 		var new_step : QuestStepItem = QUEST_STEP_ITEM.instantiate()
 		var step_is_complete : bool = false
 		if quest_save.title != "not found":
 			step_is_complete = quest_save.completed_steps.has(step.to_lower())
-		# print(q.title, step)
 		details_container.add_child(new_step)
 		new_step.initialize(step, step_is_complete)
 
