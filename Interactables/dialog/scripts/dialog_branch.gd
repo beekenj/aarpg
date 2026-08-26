@@ -3,6 +3,9 @@
 extends DialogItem
 class_name DialogBranch
 
+@warning_ignore("unused_signal")
+signal selected
+
 @export var text : String = "ok..." : set = _set_text
 
 var dialog_items : Array[DialogItem]

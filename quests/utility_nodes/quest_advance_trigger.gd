@@ -3,13 +3,19 @@
 extends QuestNode
 class_name QuestAdvanceTrigger
 
-
+@export_category("Parent Signal Connection")
+@export var signal_name : String = ""
 
 
 func _ready() -> void:
-    if Engine.is_editor_hint():
+    if Engine.is_editor_hint() or signal_name == "":
         return
-    # ...
+    # remove tool icon
+    $Sprite2D.queue_free()
+    # connect to signal
+    if get_parent().has_signal(signal_name):
+        get_parent().connect(signal_name, advance_quest)
+
 
 
 
@@ -23,8 +29,6 @@ func advance_quest() -> void:
     if _step == "N/A":
         _step = ""
 
-
-    print("advance_quest: ", _title)
     QuestManager.update_quest(_title, _step, quest_complete)
 
 
