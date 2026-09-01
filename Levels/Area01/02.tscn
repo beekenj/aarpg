@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://cdx7o4ti656t" path="res://quests/recover_lost_flute.tres" id="20_xflnv"]
 [ext_resource type="PackedScene" uid="uid://x7mqxn0cs75f" path="res://quests/utility_nodes/quest_advance_trigger.tscn" id="21_xflnv"]
 [ext_resource type="Resource" uid="uid://fp6nlphlp463" path="res://quests/long_quest.tres" id="22_wrnjp"]
+[ext_resource type="PackedScene" uid="uid://dnete4104lbhm" path="res://quests/utility_nodes/quest_activated_switch.tscn" id="24_d1jyu"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_isjcn"]
 load_path = "res://.godot/imported/npc_portrait_01.png-0d842fbb89fe27788e3aacb25efe8d8e.ctex"
@@ -202,18 +203,6 @@ Quest: Long Quest
 Step: 0 - N/A
 Compete: false"
 
-[node name="PressurePlate2" parent="." unique_id=93475301 instance=ExtResource("20_wrnjp")]
-position = Vector2(341, 253)
-
-[node name="QuestAdvanceTrigger" parent="PressurePlate2" unique_id=1245028526 instance=ExtResource("21_xflnv")]
-signal_name = "activated"
-linked_quest = ExtResource("22_wrnjp")
-quest_step = 1
-settings_summary = "UPDATE QUEST:
-Quest: Long Quest
-Step: 1 - Step 1
-Compete: false"
-
 [node name="PressurePlate3" parent="." unique_id=989891511 instance=ExtResource("20_wrnjp")]
 position = Vector2(383, 253)
 
@@ -224,4 +213,19 @@ quest_step = 2
 settings_summary = "UPDATE QUEST:
 Quest: Long Quest
 Step: 2 - Step 2
+Compete: false"
+
+[node name="QuestActivatedSwitch" parent="." unique_id=509976476 instance=ExtResource("24_d1jyu")]
+react_to_global_signal = null
+
+[node name="PressurePlate2" parent="QuestActivatedSwitch" unique_id=93475301 instance=ExtResource("20_wrnjp")]
+position = Vector2(341, 253)
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate2" unique_id=1245028526 instance=ExtResource("21_xflnv")]
+signal_name = "activated"
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 1 - Step 1
 Compete: false"

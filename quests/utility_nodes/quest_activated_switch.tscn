@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://dnete4104lbhm"]
 
+[ext_resource type="Script" uid="uid://deaywdad7s5gl" path="res://quests/utility_nodes/quest_activated_switch.gd" id="1_1a44c"]
+
 [node name="QuestActivatedSwitch" type="Node2D" unique_id=509976476]
+script = ExtResource("1_1a44c")
