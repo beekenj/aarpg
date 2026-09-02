@@ -156,6 +156,7 @@ npc_info = SubResource("Resource_xiy2e")
 metadata/_custom_type_script = "uid://dxq1ime3bskty"
 
 [node name="QuestAdvanceTrigger" parent="NPC2/DialogInteraction/DialogChoice/DialogBranch" unique_id=1321230352 instance=ExtResource("21_xflnv")]
+position = Vector2(336, 131)
 signal_name = "selected"
 linked_quest = ExtResource("20_xflnv")
 settings_summary = "UPDATE QUEST:
@@ -203,23 +204,15 @@ Quest: Long Quest
 Step: 0 - N/A
 Compete: false"
 
-[node name="PressurePlate3" parent="." unique_id=989891511 instance=ExtResource("20_wrnjp")]
-position = Vector2(383, 253)
-
-[node name="QuestAdvanceTrigger" parent="PressurePlate3" unique_id=980625935 instance=ExtResource("21_xflnv")]
-signal_name = "activated"
+[node name="QuestActivatedSwitch" parent="." unique_id=509976476 instance=ExtResource("24_d1jyu")]
+position = Vector2(341, 253)
+react_to_global_signal = true
 linked_quest = ExtResource("22_wrnjp")
-quest_step = 2
 settings_summary = "UPDATE QUEST:
 Quest: Long Quest
-Step: 2 - Step 2
-Compete: false"
-
-[node name="QuestActivatedSwitch" parent="." unique_id=509976476 instance=ExtResource("24_d1jyu")]
-react_to_global_signal = null
+Checking if player has quest"
 
 [node name="PressurePlate2" parent="QuestActivatedSwitch" unique_id=93475301 instance=ExtResource("20_wrnjp")]
-position = Vector2(341, 253)
 
 [node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch/PressurePlate2" unique_id=1245028526 instance=ExtResource("21_xflnv")]
 signal_name = "activated"
@@ -228,4 +221,25 @@ quest_step = 1
 settings_summary = "UPDATE QUEST:
 Quest: Long Quest
 Step: 1 - Step 1
+Compete: false"
+
+[node name="QuestActivatedSwitch2" parent="." unique_id=2009316469 instance=ExtResource("24_d1jyu")]
+position = Vector2(383, 253)
+check_type = 1
+react_to_global_signal = true
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 1
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if player has completed step: step 1"
+
+[node name="PressurePlate3" parent="QuestActivatedSwitch2" unique_id=989891511 instance=ExtResource("20_wrnjp")]
+
+[node name="QuestAdvanceTrigger" parent="QuestActivatedSwitch2/PressurePlate3" unique_id=980625935 instance=ExtResource("21_xflnv")]
+signal_name = "activated"
+linked_quest = ExtResource("22_wrnjp")
+quest_step = 2
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Step: 2 - Step 2
 Compete: false"
