@@ -42,7 +42,10 @@ func check_is_activated() -> void:
 			set_is_activated(true)
 		elif check_type == CheckType.QUEST_COMPLETE:
 			# simply set is activated based on our quest complete values match
-			set_is_activated(quest_complete == _q.is_complete)
+			var is_complete : bool = false
+			if _q.is_complete is bool:
+				is_complete = _q.is_complete
+			set_is_activated(is_complete)
 		elif check_type == CheckType.QUEST_STEP_COMPLETE:
 			# 
 			if quest_step > 0:
@@ -50,9 +53,29 @@ func check_is_activated() -> void:
 			else:
 				set_is_activated(false)
 		elif check_type == CheckType.ON_CURRENT_QUEST_STEP:
-			pass
+			var step : String = get_step()
+			if step == "N/A":
+				# no step, set false
+				set_is_activated(false)
+			else:
+				set_is_activated(can_activate(_q))
 	else:
 		set_is_activated(false)
+
+
+func can_activate(_q : Dictionary) -> bool:
+	var step : String = get_step()
+	var prev_step : String = get_prev_step()
+	return (
+		# return false if current step in completed steps array
+		not _q.completed_steps.has(step.to_lower()) 
+		and (
+			# there is no previous step, must be on first step, return true
+			prev_step == "N/A" or 
+			# return true if previous step in completed steps array
+			# since current step is not in the array
+			_q.completed_steps.has(prev_step.to_lower()))
+	)
 
 
 func set_is_activated(_v : bool) -> void:
@@ -80,8 +103,14 @@ func show_children() -> void:
 func hide_children() -> void:
 	for c in get_children():
 		c.set_deferred("visible", false)
-		c.set_deferred("process_mode", Node.PROCESS_MODE_INHERIT)
+		c.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 
+
+func get_prev_step() -> String:
+	if quest_step <= get_step_count() and quest_step > 1:
+		return linked_quest.steps[quest_step - 2]
+	else:
+		return "N/A"
 
 
 func _set_check_type(v : CheckType) -> void:

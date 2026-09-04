@@ -225,13 +225,13 @@ Compete: false"
 
 [node name="QuestActivatedSwitch2" parent="." unique_id=2009316469 instance=ExtResource("24_d1jyu")]
 position = Vector2(383, 253)
-check_type = 1
+check_type = 2
 react_to_global_signal = true
 linked_quest = ExtResource("22_wrnjp")
-quest_step = 1
+quest_step = 2
 settings_summary = "UPDATE QUEST:
 Quest: Long Quest
-Checking if player has completed step: step 1"
+Checking if player is on step: step 2"
 
 [node name="PressurePlate3" parent="QuestActivatedSwitch2" unique_id=989891511 instance=ExtResource("20_wrnjp")]
 
@@ -239,7 +239,20 @@ Checking if player has completed step: step 1"
 signal_name = "activated"
 linked_quest = ExtResource("22_wrnjp")
 quest_step = 2
+quest_complete = true
 settings_summary = "UPDATE QUEST:
 Quest: Long Quest
-Step: 2 - Step 2
-Compete: false"
+Step: 2 - step 2
+Compete: true"
+
+[node name="QuestActivatedSwitch3" parent="." unique_id=604392658 instance=ExtResource("24_d1jyu")]
+position = Vector2(341, 206)
+check_type = 3
+remove_when_activated = true
+react_to_global_signal = true
+linked_quest = ExtResource("22_wrnjp")
+settings_summary = "UPDATE QUEST:
+Quest: Long Quest
+Checking if quest is complete"
+
+[node name="Pot" parent="QuestActivatedSwitch3" unique_id=1868008894 instance=ExtResource("19_m4nom")]
