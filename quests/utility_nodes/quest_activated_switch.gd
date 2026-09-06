@@ -106,12 +106,6 @@ func hide_children() -> void:
 		c.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 
 
-func get_prev_step() -> String:
-	if quest_step <= get_step_count() and quest_step > 1:
-		return linked_quest.steps[quest_step - 2]
-	else:
-		return "N/A"
-
 
 func _set_check_type(v : CheckType) -> void:
 	check_type = v
