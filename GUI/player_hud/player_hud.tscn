@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cgam4k605akae" path="res://GUI/player_hud/boss-hp.png" id="5_sysqg"]
 [ext_resource type="FontFile" uid="uid://dplj0nmib8k77" path="res://GUI/fonts/m5x7.ttf" id="6_rxq5y"]
 [ext_resource type="Texture2D" uid="uid://c7yge831cb24v" path="res://GUI/player_hud/panel_notification.png" id="7_rxq5y"]
+[ext_resource type="Script" uid="uid://dcvd6ui02866y" path="res://GUI/player_hud/notifications.gd" id="7_scbx3"]
 [ext_resource type="AudioStream" uid="uid://ehdb0ve6fuko" path="res://GUI/player_hud/notification.wav" id="8_5bkpt"]
 
 [sub_resource type="FontVariation" id="FontVariation_yhjvm"]
@@ -615,6 +616,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("7_scbx3")
 
 [node name="PanelContainer" type="PanelContainer" parent="HUDControl/Notification" unique_id=1623664505]
 layout_mode = 0
