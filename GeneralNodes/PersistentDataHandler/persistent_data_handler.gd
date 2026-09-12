@@ -17,5 +17,9 @@ func get_value() -> void:
 	data_loaded.emit()
 
 
+func remove_value() -> void:
+	SaveManager.remove_persistent_value(_get_name())
+
+
 func _get_name() -> String:
 	return get_tree().current_scene.scene_file_path + "/" + get_parent().name + "/" + name
