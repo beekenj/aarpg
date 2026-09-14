@@ -8,12 +8,12 @@ class_name QuestAdvanceTrigger
 
 
 func _ready() -> void:
-    if Engine.is_editor_hint() or signal_name == "":
+    if Engine.is_editor_hint():
         return
     # remove tool icon
     $Sprite2D.queue_free()
     # connect to signal
-    if get_parent().has_signal(signal_name):
+    if signal_name != "" and get_parent().has_signal(signal_name):
         get_parent().connect(signal_name, advance_quest)
 
 
@@ -22,7 +22,7 @@ func _ready() -> void:
 func advance_quest() -> void:
     if linked_quest == null:
         return
-    
+    await get_tree().process_frame
     var _title : String = linked_quest.title
     var _step : String = get_step()
 

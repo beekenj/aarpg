@@ -20,7 +20,8 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	# remove tool icon
-	$Sprite2D.queue_free()
+	if $Sprite2D:
+		$Sprite2D.queue_free()
 	if react_to_global_signal == true:
 		QuestManager.quest_updated.connect(_on_quest_updated)
 	check_is_activated()
