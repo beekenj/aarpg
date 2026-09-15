@@ -47,6 +47,20 @@ portrait = ExtResource("10_sci0f")
 dialogue_audio_pitch = 1.5
 metadata/_custom_type_script = "uid://crvlnjewusfex"
 
+[sub_resource type="GDScript" id="GDScript_d1jyu"]
+script/source = "extends Node
+
+@onready var quest_advance_trigger: QuestAdvanceTrigger = $\"..\"
+
+
+func _ready() -> void:
+	quest_advance_trigger.advanced.connect(quest_complete)
+	
+
+func quest_complete() -> void:
+	PlayerManager.INVENTORY_DATA.use_item(load(\"res://Items/magical_flute.tres\"))
+"
+
 [node name="02" type="Node2D" unique_id=309615409]
 script = ExtResource("1_tek06")
 music = ExtResource("2_ua1y0")
@@ -197,21 +211,24 @@ text = "Geez! Some lousy hero you are..."
 npc_info = SubResource("Resource_xiy2e")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
-[node name="QuestActive" parent="NPC_NERO" unique_id=282553476 instance=ExtResource("24_d1jyu")]
+[node name="QuestNotCompleted" parent="NPC_NERO" unique_id=282553476 instance=ExtResource("24_d1jyu")]
 check_type = 3
 remove_when_activated = true
 free_on_remove = true
 react_to_global_signal = true
-settings_summary = "Select a quest"
+linked_quest = ExtResource("20_xflnv")
+settings_summary = "UPDATE QUEST:
+Quest: Recover Lost Magical Flute
+Checking if quest is complete"
 
-[node name="QuestStarted" parent="NPC_NERO/QuestActive" unique_id=2021468955 instance=ExtResource("24_d1jyu")]
+[node name="QuestStarted" parent="NPC_NERO/QuestNotCompleted" unique_id=2021468955 instance=ExtResource("24_d1jyu")]
 react_to_global_signal = true
 linked_quest = ExtResource("20_xflnv")
 settings_summary = "UPDATE QUEST:
 Quest: Recover Lost Magical Flute
 Checking if player has quest"
 
-[node name="QuestActive" parent="NPC_NERO/QuestActive/QuestStarted" unique_id=322646537 instance=ExtResource("24_d1jyu")]
+[node name="QuestInProgress" parent="NPC_NERO/QuestNotCompleted/QuestStarted" unique_id=322646537 instance=ExtResource("24_d1jyu")]
 check_type = 2
 remove_when_activated = true
 react_to_global_signal = true
@@ -221,15 +238,15 @@ settings_summary = "UPDATE QUEST:
 Quest: Recover Lost Magical Flute
 Checking if player is on step: return magical flute to nero"
 
-[node name="DialogInteraction" parent="NPC_NERO/QuestActive/QuestStarted/QuestActive" unique_id=1517604068 instance=ExtResource("10_isjcn")]
+[node name="DialogInteraction" parent="NPC_NERO/QuestNotCompleted/QuestStarted/QuestInProgress" unique_id=1517604068 instance=ExtResource("10_isjcn")]
 
-[node name="DialogText" type="Node" parent="NPC_NERO/QuestActive/QuestStarted/QuestActive/DialogInteraction" unique_id=1555175206]
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestNotCompleted/QuestStarted/QuestInProgress/DialogInteraction" unique_id=1555175206]
 script = ExtResource("11_5l2i7")
 text = "Thank you hero! I lost my flute in the cave to the north."
 npc_info = SubResource("Resource_xiy2e")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
-[node name="QuestCompletion" parent="NPC_NERO/QuestActive/QuestStarted" unique_id=1098911093 instance=ExtResource("24_d1jyu")]
+[node name="QuestCompletion" parent="NPC_NERO/QuestNotCompleted/QuestStarted" unique_id=1098911093 instance=ExtResource("24_d1jyu")]
 check_type = 2
 react_to_global_signal = true
 linked_quest = ExtResource("20_xflnv")
@@ -238,15 +255,15 @@ settings_summary = "UPDATE QUEST:
 Quest: Recover Lost Magical Flute
 Checking if player is on step: return magical flute to nero"
 
-[node name="DialogInteraction2" parent="NPC_NERO/QuestActive/QuestStarted/QuestCompletion" unique_id=377521220 instance=ExtResource("10_isjcn")]
+[node name="DialogInteraction2" parent="NPC_NERO/QuestNotCompleted/QuestStarted/QuestCompletion" unique_id=377521220 instance=ExtResource("10_isjcn")]
 
-[node name="DialogText" type="Node" parent="NPC_NERO/QuestActive/QuestStarted/QuestCompletion/DialogInteraction2" unique_id=500844128]
+[node name="DialogText" type="Node" parent="NPC_NERO/QuestNotCompleted/QuestStarted/QuestCompletion/DialogInteraction2" unique_id=500844128]
 script = ExtResource("11_5l2i7")
 text = "Wow you found my flute! It's not much, but here's a reward."
 npc_info = SubResource("Resource_xiy2e")
 metadata/_custom_type_script = "uid://cdkb66e1trluv"
 
-[node name="QuestAdvanceTrigger" parent="NPC_NERO/QuestActive/QuestStarted/QuestCompletion/DialogInteraction2" unique_id=397726055 instance=ExtResource("21_xflnv")]
+[node name="QuestAdvanceTrigger" parent="NPC_NERO/QuestNotCompleted/QuestStarted/QuestCompletion/DialogInteraction2" unique_id=397726055 instance=ExtResource("21_xflnv")]
 signal_name = "finished"
 linked_quest = ExtResource("20_xflnv")
 quest_step = 3
@@ -255,6 +272,9 @@ settings_summary = "UPDATE QUEST:
 Quest: Recover Lost Magical Flute
 Step: 3 - return magical flute to nero
 Compete: true"
+
+[node name="Node" type="Node" parent="NPC_NERO/QuestNotCompleted/QuestStarted/QuestCompletion/DialogInteraction2/QuestAdvanceTrigger" unique_id=815001718]
+script = SubResource("GDScript_d1jyu")
 
 [node name="Pot" parent="." unique_id=682746932 instance=ExtResource("19_m4nom")]
 position = Vector2(145, 239)
@@ -315,7 +335,7 @@ Step: 2 - step 2
 Compete: true"
 
 [node name="QuestActivatedSwitch3" parent="." unique_id=604392658 instance=ExtResource("24_d1jyu")]
-position = Vector2(341, 206)
+position = Vector2(135, 272)
 check_type = 3
 remove_when_activated = true
 react_to_global_signal = true
@@ -325,4 +345,4 @@ Quest: Long Quest
 Checking if quest is complete"
 
 [node name="Pot" parent="QuestActivatedSwitch3" unique_id=1868008894 instance=ExtResource("19_m4nom")]
-position = Vector2(-208, 67)
+position = Vector2(-2, 8)

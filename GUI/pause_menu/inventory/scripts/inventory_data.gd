@@ -26,6 +26,7 @@ func add_item(item : ItemData, quantity : int = 1) -> bool:
 	return false
 
 
+
 func connect_slots() -> void:
 	for s in slots:
 		if s:
