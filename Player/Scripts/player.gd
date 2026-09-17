@@ -10,6 +10,10 @@ var direction : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
+var level : int = 1
+var xp : int = 0
+var attack : int = 1
+var defense : int = 1
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
