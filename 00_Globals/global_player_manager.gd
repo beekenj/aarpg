@@ -31,6 +31,7 @@ func set_health(hp : int, max_hp : int) -> void:
 
 func reward_xp(_xp : int) -> void:
 	player.xp += _xp
+	# print("xp rewarded: ", _xp)
 
 
 func set_player_position(_new_pos : Vector2) -> void:

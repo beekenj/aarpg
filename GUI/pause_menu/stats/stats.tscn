@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dojjsmgsnxxen"]
+
+[ext_resource type="Texture2D" uid="uid://mtjs7xgyf1yv" path="res://Items/sprites/items.png" id="1_mwf8o"]
+[ext_resource type="Script" uid="uid://cu3qr6qo001ma" path="res://GUI/pause_menu/stats/stats.gd" id="2_4eunm"]
+[ext_resource type="FontFile" uid="uid://cbsuvg8x0ke6k" path="res://GUI/fonts/Abaddon Bold.ttf" id="2_bxn72"]
+[ext_resource type="FontFile" uid="uid://yuwy4uqsbdd1" path="res://GUI/fonts/Abaddon Light.ttf" id="3_4eunm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsqrg"]
+atlas = ExtResource("1_mwf8o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36pfd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_rsqrg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="Stats" type="PanelContainer" unique_id=481372863]
+offset_right = 205.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_36pfd")
+script = ExtResource("2_4eunm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1701303945]
+layout_mode = 2
+
+[node name="Level" type="HBoxContainer" parent="VBoxContainer" unique_id=974662590]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Level" unique_id=1548430190]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.83137256, 0.49803922, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bxn72")
+text = "Level"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Level" unique_id=1051238771]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4eunm")
+text = "1"
+horizontal_alignment = 2
+
+[node name="XP" type="HBoxContainer" parent="VBoxContainer" unique_id=1913238103]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/XP" unique_id=355682128]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.83137256, 0.49803922, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bxn72")
+text = "XP"
+
+[node name="Label2" type="Label" parent="VBoxContainer/XP" unique_id=1153431742]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4eunm")
+text = "1"
+horizontal_alignment = 2
+
+[node name="Attack" type="HBoxContainer" parent="VBoxContainer" unique_id=1091865693]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Attack" unique_id=543789859]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.83137256, 0.49803922, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bxn72")
+text = "Attack"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Attack" unique_id=1292937547]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4eunm")
+text = "1"
+horizontal_alignment = 2
+
+[node name="Defense" type="HBoxContainer" parent="VBoxContainer" unique_id=59075269]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Defense" unique_id=1881369147]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.83137256, 0.49803922, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_bxn72")
+text = "Defense"
+
+[node name="Label2" type="Label" parent="VBoxContainer/Defense" unique_id=1613769434]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_4eunm")
+text = "1"
+horizontal_alignment = 2

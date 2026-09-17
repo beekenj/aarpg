@@ -33,7 +33,7 @@ func enter() -> void:
 	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	disable_hurt_box()
 	drop_items()
-	pass
+	PlayerManager.reward_xp(enemy.xp_reward)
 
 
 ## what happens when the enemy exits this state?
