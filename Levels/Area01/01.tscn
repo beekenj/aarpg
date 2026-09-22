@@ -551,6 +551,7 @@ side = 2
 
 [node name="Goblin" parent="." unique_id=1107019713 instance=ExtResource("5_pwydo")]
 position = Vector2(386, 107)
+xp_reward = 50
 
 [node name="Goblin2" parent="." unique_id=285965550 instance=ExtResource("5_pwydo")]
 position = Vector2(56, 251)

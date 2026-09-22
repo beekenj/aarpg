@@ -1504,7 +1504,7 @@ unique_name_in_owner = true
 rotation = 6.2831855
 collision_mask = 256
 monitoring = false
-damage = 3
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ChargeSpinHurtBox" unique_id=1846117835]
 shape = SubResource("CircleShape2D_n471f")
