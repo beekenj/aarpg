@@ -764,7 +764,7 @@ vframes = 3
 [node name="AttackHurtBox" parent="Sprite2D" unique_id=1309440707 instance=ExtResource("2_lvhkj")]
 position = Vector2(0, 18)
 monitoring = false
-damage = 2
+damage = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackHurtBox" unique_id=1520254333]
 position = Vector2(0, -7)

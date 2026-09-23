@@ -87,7 +87,14 @@ func _take_damage(hurt_box : HurtBox) -> void:
 	if invulnerable == true:
 		return
 	if hp > 0:
-		update_hp(-hurt_box.damage)
+		var dmg : int = hurt_box.damage
+
+		# subtract defense value from damage
+		# keep damage min of 1, but allow 0 to still be passed by a hurt_box
+		if dmg > 0:
+			dmg = clampi(dmg - defense, 1, dmg)
+
+		update_hp(-dmg)
 		player_damaged.emit(hurt_box)
 	
 
