@@ -11,8 +11,8 @@ signal player_leveled_up
 var interact_handled : bool = true
 var player : Player
 var player_spawned : bool = false
-var level_requirements : Array[int] = [0, 50, 100, 200, 400, 800, 1500, 3000, 6000, 12000, 25000]
-# var level_requirements : Array[int] = [0, 5, 10, 20, 40]
+# var level_requirements : Array[int] = [0, 50, 100, 200, 400, 800, 1500, 3000, 6000, 12000, 25000]
+var level_requirements : Array[int] = [0, 5, 10, 20, 40]
 
 
 func _ready() -> void:
